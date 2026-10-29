@@ -3,27 +3,44 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6dfe6">
-  <meta name="description" content="Heidi Monsen Pilates">
 
-  <link rel="manifest" href="./manifest.webmanifest">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f6dfe6"
+  >
+
+  <meta
+    name="description"
+    content="Heidi Monsen Pilates"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.webmanifest"
+  >
 
   <title>Heidi Monsen Pilates</title>
 
   <style>
+
     :root {
       --bg: #f8eef1;
       --panel: #fffafb;
       --pink: #f3d8e0;
-      --pink-2: #e9bcc9;
-      --pink-3: #d797ab;
+      --pink-dark: #b6788c;
+      --pink-deep: #9f6276;
       --text: #5c4950;
       --muted: #8b727a;
       --line: #ecd7dd;
-      --button: #b6788c;
-      --button-dark: #9f6276;
       --white: #ffffff;
+      --green: #52835d;
+      --red: #a64d5c;
+
       font-family: Arial, sans-serif;
     }
 
@@ -38,17 +55,12 @@
       color: var(--text);
     }
 
-    body {
-      min-height: 100vh;
-    }
-
     main {
       max-width: 640px;
-      margin: 0 auto;
+      margin: auto;
       background: var(--panel);
       min-height: 100vh;
       padding-bottom: 95px;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
     }
 
     header {
@@ -57,7 +69,7 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, #fff8fa 0%, #fdf5f7 100%);
+      background: #fff8fa;
     }
 
     .brand {
@@ -83,45 +95,34 @@
     h3 {
       font-family: Georgia, serif;
       font-weight: normal;
-      margin-top: 0;
       color: #704957;
     }
 
     h1 {
       font-size: 38px;
       line-height: 1.15;
-      margin-bottom: 12px;
+      margin: 0 0 12px;
     }
 
     h2 {
       font-size: 28px;
-      margin-bottom: 10px;
+      margin: 0 0 12px;
     }
 
     h3 {
       font-size: 22px;
-      margin-bottom: 8px;
+      margin: 6px 0;
     }
 
     p {
       line-height: 1.55;
-      color: var(--text);
-      margin-top: 0;
-    }
-
-    .tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--muted);
-      margin-bottom: 10px;
     }
 
     .hero {
-      background: linear-gradient(180deg, #fef7f9 0%, #f8e7ec 100%);
-      border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
+      background: #f8e7ec;
+      border: 1px solid var(--line);
     }
 
     .hero img {
@@ -136,12 +137,16 @@
     }
 
     .card {
-      background: var(--white);
+      background: white;
       border: 1px solid var(--line);
       border-radius: 16px;
-      overflow: hidden;
       margin: 14px 0;
-      box-shadow: 0 8px 18px rgba(183, 120, 140, 0.06);
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(183,120,140,0.06);
+    }
+
+    .card-content {
+      padding: 18px;
     }
 
     .card-image {
@@ -151,48 +156,64 @@
       display: block;
     }
 
-    .card-content {
-      padding: 18px;
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
 
     .notice {
       background: #fdf3f6;
       border: 1px solid var(--line);
-      padding: 14px;
       border-radius: 12px;
-      font-size: 13px;
-      color: var(--muted);
+      padding: 14px;
       margin-bottom: 16px;
+      font-size: 13px;
     }
 
-    .muted {
-      font-size: 13px;
-      color: var(--muted);
+    .availability {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 8px 0 14px;
+    }
+
+    .available {
+      background: #e9f4eb;
+      color: var(--green);
+    }
+
+    .full {
+      background: #f9e6e9;
+      color: var(--red);
     }
 
     button,
     .btn {
       font: inherit;
       border: 0;
-      background: var(--button);
+      background: var(--pink-dark);
       color: white;
       border-radius: 10px;
       padding: 13px 16px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      transition: 0.2s ease;
-    }
-
-    button:hover,
-    .btn:hover {
-      background: var(--button-dark);
     }
 
     button.outline {
       background: transparent;
-      color: #9c5d72;
+      color: var(--pink-deep);
       border: 1px solid #dcb4c1;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .wide {
@@ -206,9 +227,8 @@
       padding: 13px;
       border: 1px solid #e5c8d1;
       border-radius: 10px;
-      background: #fff;
+      background: white;
       font: inherit;
-      color: var(--text);
     }
 
     label {
@@ -216,7 +236,21 @@
       margin: 14px 0 7px;
       font-size: 13px;
       font-weight: bold;
-      color: #845867;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 35px 10px;
+      color: var(--muted);
+    }
+
+    .class-date {
+      font-weight: bold;
+      color: #8b596b;
     }
 
     nav {
@@ -226,9 +260,8 @@
       transform: translateX(-50%);
       width: 100%;
       max-width: 640px;
-      background: rgba(255, 250, 251, 0.98);
-      backdrop-filter: blur(8px);
       display: flex;
+      background: #fffafb;
       border-top: 1px solid var(--line);
       padding-bottom: env(safe-area-inset-bottom);
     }
@@ -236,48 +269,43 @@
     nav button,
     nav a {
       flex: 1;
+      border: 0;
       background: transparent;
       color: #946572;
-      border: 0;
-      border-radius: 0;
-      padding: 13px 4px;
       font-size: 11px;
       text-align: center;
+      padding: 13px 3px;
       text-decoration: none;
-      line-height: 1.25;
+      border-radius: 0;
     }
 
-    nav button.active {
-      background: #fdf2f5;
-      color: #744755;
-      font-weight: bold;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    a {
-      color: #a35f77;
-    }
-
-    .small-gap {
-      height: 8px;
-    }
   </style>
+
 </head>
+
 
 <body>
 
 <main>
 
   <header>
+
     <div>
-      <div class="brand">HEIDI MONSEN</div>
-      <div class="sub">P I L A T E S</div>
+
+      <div class="brand">
+        HEIDI MONSEN
+      </div>
+
+      <div class="sub">
+        P I L A T E S
+      </div>
+
     </div>
 
-    <span style="font-size:26px;color:#bf7f95;">✿</span>
+    <span style="font-size:26px;color:#bf7f95;">
+      ✿
+    </span>
+
   </header>
 
 
@@ -286,13 +314,17 @@
   <section id="home">
 
     <div class="hero">
+
       <img
-        src="https://static.wixstatic.com/media/0f185f_725e8267b36f406a80130c5cce46a2c7~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screen%20Shot%202018-01-02%20at%2013_59_57.jpg"
-        alt="Pilates class hero image"
+        src="https://static.wixstatic.com/media/0f185f_725e8267b36f406a80130c5cce46a2c7~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85/Screen%20Shot%202018-01-02%20at%2013_59_57.jpg"
+        alt="Pilates"
       >
 
       <div class="hero-content">
-        <div class="tag">Pilates in Guildford</div>
+
+        <div class="tag">
+          Pilates in Guildford
+        </div>
 
         <h1>
           Move better.<br>
@@ -301,55 +333,73 @@
         </h1>
 
         <p>
-          Friendly mat Pilates classes in Shalford and Blackheath,
-          plus private reformer sessions by enquiry.
+          Friendly mat Pilates classes in Shalford
+          and Blackheath, plus private reformer sessions.
         </p>
 
         <button onclick="showPage('classes')">
-          Explore mat classes →
+          View live timetable →
         </button>
+
       </div>
+
     </div>
 
 
     <div class="card">
+
       <img
         class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/crop/x_31,y_49,w_2939,h_1951/fill/w_980,h_651,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC06591_JPG.jpg"
-        alt="Mat Pilates class"
+        src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/fill/w_980,h_651,al_c,q_85/DSC06591_JPG.jpg"
+        alt="Mat Pilates"
       >
 
       <div class="card-content">
-        <div class="tag">Mat classes</div>
-        <h2>Mat Pilates</h2>
+
+        <div class="tag">
+          Mat Pilates
+        </div>
+
+        <h2>
+          Live class timetable
+        </h2>
+
         <p>
-          Browse the weekly timetable and enquire about
-          term places or available drop-in sessions.
+          See upcoming classes and current availability.
         </p>
 
         <button
           class="outline"
           onclick="showPage('classes')"
         >
-          See timetable
+          View classes
         </button>
+
       </div>
+
     </div>
 
 
     <div class="card">
+
       <img
         class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC04433_JPG.jpg"
-        alt="Private reformer Pilates studio"
+        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85/DSC04433_JPG.jpg"
+        alt="Reformer Pilates"
       >
 
       <div class="card-content">
-        <div class="tag">Private Pilates</div>
-        <h2>Private Reformer Pilates</h2>
+
+        <div class="tag">
+          Private Pilates
+        </div>
+
+        <h2>
+          Reformer
+        </h2>
+
         <p>
-          Tailored reformer sessions in Heidi’s private studio.
-          These stay as an enquiry, not a direct booking.
+          Private reformer sessions are arranged directly with Heidi.
         </p>
 
         <button
@@ -358,159 +408,213 @@
         >
           Make an enquiry
         </button>
+
       </div>
+
     </div>
 
 
     <div class="card">
-      <img
-        class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_8e8796246cbe49339015cb81760397eb~mv2.png/v1/fill/w_980,h_974,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Heidi_pilates.png"
-        alt="Heidi Monsen"
-      >
 
       <div class="card-content">
-        <div class="tag">Your account</div>
-        <h2>Log in / My Account</h2>
+
+        <div class="tag">
+          Customer account
+        </div>
+
+        <h2>
+          My Account
+        </h2>
+
         <p>
-          Create an account or log in to your
-          Heidi Monsen Pilates customer account.
+          Log in or create your Heidi Monsen Pilates account.
         </p>
 
-        <a class="btn" href="./login.html">
-          Go to account
+        <a
+          class="btn"
+          href="./login.html"
+        >
+          Log in / My Account
         </a>
+
       </div>
+
     </div>
 
   </section>
 
 
-  <!-- CLASSES -->
+  <!-- LIVE CLASSES -->
 
-  <section id="classes" class="hidden">
+  <section
+    id="classes"
+    class="hidden"
+  >
 
-    <div class="tag">Group classes</div>
-    <h2>Mat Pilates timetable</h2>
+    <div class="tag">
+      Live timetable
+    </div>
+
+    <h2>
+      Upcoming Classes
+    </h2>
+
 
     <div class="notice">
-      Online payments and live booking will be added next.
-      For now, this section prepares a class enquiry.
+      This timetable is loaded live from Heidi Monsen Pilates.
+      Availability refreshes automatically.
     </div>
 
-    <label for="filter">Filter by day</label>
 
-    <select id="filter" onchange="drawClasses()">
-      <option>All days</option>
-      <option>Monday</option>
-      <option>Tuesday</option>
-      <option>Wednesday</option>
-      <option>Thursday</option>
-      <option>Friday</option>
+    <label for="dayFilter">
+      Filter by day
+    </label>
+
+    <select
+      id="dayFilter"
+      onchange="renderClasses()"
+    >
+
+      <option value="all">
+        All days
+      </option>
+
+      <option value="Monday">
+        Monday
+      </option>
+
+      <option value="Tuesday">
+        Tuesday
+      </option>
+
+      <option value="Wednesday">
+        Wednesday
+      </option>
+
+      <option value="Thursday">
+        Thursday
+      </option>
+
+      <option value="Friday">
+        Friday
+      </option>
+
     </select>
 
-    <div id="classList"></div>
-
-  </section>
-
-
-  <!-- CLASS ENQUIRY -->
-
-  <section id="classEnquiry" class="hidden">
-
-    <button
-      class="outline"
-      onclick="showPage('classes')"
-    >
-      ← Timetable
-    </button>
-
-    <div class="small-gap"></div>
-
-    <h2>Class enquiry</h2>
 
     <div
-      id="classSummary"
-      class="notice"
-    ></div>
-
-    <form id="classForm">
-
-      <label>Full name</label>
-      <input id="className" required>
-
-      <label>Email address</label>
-      <input id="classEmail" type="email" required>
-
-      <label>Enquiry type</label>
-      <select id="classType">
-        <option>Full-term place</option>
-        <option>Drop-in availability</option>
-      </select>
-
-      <button
-        class="wide"
-        style="margin-top:18px"
-      >
-        Prepare enquiry email
-      </button>
-    </form>
-
-    <p class="muted" style="margin-top:14px;">
-      This opens the customer’s email app with the class enquiry filled in.
-    </p>
+      id="classList"
+      class="loading"
+    >
+      Loading live timetable...
+    </div>
 
   </section>
 
 
   <!-- REFORMER -->
 
-  <section id="reformer" class="hidden">
+  <section
+    id="reformer"
+    class="hidden"
+  >
 
-    <div class="tag">Private Pilates</div>
-    <h2>Reformer session enquiry</h2>
+    <div class="tag">
+      Private Pilates
+    </div>
+
+    <h2>
+      Reformer Session Enquiry
+    </h2>
+
 
     <div class="card">
+
       <img
         class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC04433_JPG.jpg"
+        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85/DSC04433_JPG.jpg"
         alt="Reformer studio"
       >
 
+
       <div class="card-content">
+
         <p>
-          Private reformer sessions are arranged directly with Heidi.
-          Customers enquire below rather than choosing and paying for a slot here.
+          Private sessions are arranged directly with Heidi.
         </p>
+
 
         <form id="reformerForm">
 
-          <label>Full name</label>
-          <input id="rName" required>
+          <label>
+            Full name
+          </label>
 
-          <label>Email address</label>
-          <input id="rEmail" type="email" required>
+          <input
+            id="rName"
+            required
+          >
 
-          <label>Phone number</label>
-          <input id="rPhone" type="tel">
 
-          <label>Session type</label>
+          <label>
+            Email
+          </label>
+
+          <input
+            id="rEmail"
+            type="email"
+            required
+          >
+
+
+          <label>
+            Phone number
+          </label>
+
+          <input
+            id="rPhone"
+            type="tel"
+          >
+
+
+          <label>
+            Session
+          </label>
+
           <select id="rType">
-            <option>One-to-one</option>
-            <option>Two people</option>
+
+            <option>
+              One-to-one
+            </option>
+
+            <option>
+              Two people
+            </option>
+
           </select>
 
-          <label>Your enquiry</label>
-          <textarea id="rMessage" rows="4"></textarea>
+
+          <label>
+            Message
+          </label>
+
+          <textarea
+            id="rMessage"
+            rows="4"
+          ></textarea>
+
 
           <button
             class="wide"
             style="margin-top:16px"
           >
-            Prepare enquiry email
+            Prepare enquiry
           </button>
+
         </form>
+
       </div>
+
     </div>
 
   </section>
@@ -518,21 +622,26 @@
 
   <!-- CONTACT -->
 
-  <section id="contact" class="hidden">
+  <section
+    id="contact"
+    class="hidden"
+  >
 
-    <div class="tag">Contact</div>
-    <h2>Contact Heidi</h2>
+    <div class="tag">
+      Contact
+    </div>
+
+    <h2>
+      Contact Heidi
+    </h2>
+
 
     <div class="card">
-      <img
-        class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_def4f66608ed402da94dbe91c34583d7~mv2.jpg/v1/crop/x_161,y_0,w_2695,h_1611/fill/w_880,h_526,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screen%2520Shot%25202018-01-02%2520at%252014_02_edited.jpg"
-        alt="Pilates image"
-      >
 
       <div class="card-content">
+
         <p>
-          Questions about classes, reformer sessions or availability?
+          Questions about classes or private sessions?
         </p>
 
         <a
@@ -543,13 +652,15 @@
         >
           Contact Heidi
         </a>
+
       </div>
+
     </div>
 
   </section>
 
 
-  <!-- NAVIGATION -->
+  <!-- NAV -->
 
   <nav>
 
@@ -558,20 +669,24 @@
       Home
     </button>
 
+
     <button onclick="showPage('classes')">
       ▦<br>
       Classes
     </button>
+
 
     <button onclick="showPage('reformer')">
       ♡<br>
       Reformer
     </button>
 
+
     <button onclick="showPage('contact')">
       ✉<br>
       Contact
     </button>
+
 
     <a href="./login.html">
       ◯<br>
@@ -583,150 +698,598 @@
 </main>
 
 
-<script>
-  const sessions = [
-    ["Monday", "09:15", "Intermediate / Advanced", "Shalford Upper Village Hall"],
-    ["Monday", "10:30", "Mixed Ability", "Shalford Upper Village Hall"],
-    ["Tuesday", "09:15", "Mixed Ability", "Shalford Upper Village Hall"],
-    ["Tuesday", "10:20", "Intermediate / Advanced", "Shalford Upper Village Hall"],
-    ["Wednesday", "09:30", "Mixed Ability", "Blackheath Village Hall"],
-    ["Wednesday", "10:40", "Gentle", "Blackheath Village Hall"],
-    ["Wednesday", "18:30", "Mixed Ability", "Blackheath Village Hall"],
-    ["Wednesday", "19:35", "Intermediate / Advanced", "Blackheath Village Hall"],
-    ["Thursday", "19:00", "Intermediate / Advanced", "Blackheath Village Hall"],
-    ["Friday", "09:30", "Mixed Ability", "Blackheath Village Hall"]
-  ];
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
-  let chosenClass = null;
+<script src="./supabase-config.js"></script>
+
+
+<script>
+
+  let liveClasses = [];
+
 
   function showPage(pageId) {
+
     document
       .querySelectorAll("main > section")
       .forEach(function(section) {
+
         section.classList.add("hidden");
+
       });
 
-    const page = document.getElementById(pageId);
+
+    const page =
+      document.getElementById(pageId);
+
 
     if (page) {
+
       page.classList.remove("hidden");
+
     }
 
+
+    if (pageId === "classes") {
+
+      loadClasses();
+
+    }
+
+
     window.scrollTo(0, 0);
+
   }
 
-  function drawClasses() {
-    const selectedDay = document.getElementById("filter").value;
-    const list = document.getElementById("classList");
+
+
+  function formatDate(dateString) {
+
+    const date =
+      new Date(
+        dateString + "T12:00:00"
+      );
+
+
+    return date.toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+      }
+    );
+
+  }
+
+
+
+  function formatTime(timeString) {
+
+    if (!timeString) {
+      return "";
+    }
+
+
+    return timeString
+      .substring(0, 5);
+
+  }
+
+
+
+  async function loadClasses() {
+
+    const list =
+      document.getElementById(
+        "classList"
+      );
+
+
+    try {
+
+      const today =
+        new Date()
+          .toISOString()
+          .split("T")[0];
+
+
+      const { data, error } =
+        await supabaseClient
+
+          .from("class_sessions")
+
+          .select("*")
+
+          .gte(
+            "class_date",
+            today
+          )
+
+          .eq(
+            "status",
+            "active"
+          )
+
+          .order(
+            "class_date",
+            {
+              ascending: true
+            }
+          )
+
+          .order(
+            "start_time",
+            {
+              ascending: true
+            }
+          );
+
+
+      if (error) {
+
+        throw error;
+
+      }
+
+
+      liveClasses =
+        data || [];
+
+
+      renderClasses();
+
+    }
+
+    catch (error) {
+
+      console.error(error);
+
+
+      list.innerHTML =
+        `
+          <div class="notice">
+            The timetable could not be loaded.
+            Please refresh the page or contact Heidi.
+          </div>
+        `;
+
+    }
+
+  }
+
+
+
+  function renderClasses() {
+
+    const list =
+      document.getElementById(
+        "classList"
+      );
+
+
+    const filter =
+      document.getElementById(
+        "dayFilter"
+      ).value;
+
+
     list.innerHTML = "";
 
-    sessions.forEach(function(session, index) {
-      if (selectedDay !== "All days" && session[0] !== selectedDay) {
-        return;
+
+    let shown =
+      0;
+
+
+    liveClasses.forEach(
+      function(session) {
+
+        const date =
+          new Date(
+            session.class_date +
+            "T12:00:00"
+          );
+
+
+        const day =
+          date.toLocaleDateString(
+            "en-GB",
+            {
+              weekday: "long"
+            }
+          );
+
+
+        if (
+          filter !== "all" &&
+          filter !== day
+        ) {
+
+          return;
+
+        }
+
+
+        shown++;
+
+
+        const capacity =
+          Number(
+            session.capacity || 0
+          );
+
+
+        const booked =
+          Number(
+            session.current_booked || 0
+          );
+
+
+        const spaces =
+          Math.max(
+            capacity - booked,
+            0
+          );
+
+
+        const full =
+          capacity > 0 &&
+          spaces <= 0;
+
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "card";
+
+
+        const content =
+          document.createElement(
+            "div"
+          );
+
+
+        content.className =
+          "card-content";
+
+
+        const dateLabel =
+          document.createElement(
+            "div"
+          );
+
+
+        dateLabel.className =
+          "class-date";
+
+
+        dateLabel.textContent =
+          formatDate(
+            session.class_date
+          ) +
+          " · " +
+          formatTime(
+            session.start_time
+          );
+
+
+        const title =
+          document.createElement(
+            "h3"
+          );
+
+
+        title.textContent =
+          session.class_name ||
+          session.level ||
+          "Mat Pilates";
+
+
+        const level =
+          document.createElement(
+            "p"
+          );
+
+
+        level.textContent =
+          session.level || "";
+
+
+        const venue =
+          document.createElement(
+            "p"
+          );
+
+
+        venue.textContent =
+          session.venue || "";
+
+
+        const availability =
+          document.createElement(
+            "div"
+          );
+
+
+        availability.className =
+          "availability " +
+          (
+            full
+              ? "full"
+              : "available"
+          );
+
+
+        if (full) {
+
+          availability.textContent =
+            "FULL";
+
+        }
+
+        else if (capacity > 0) {
+
+          availability.textContent =
+            spaces +
+            (
+              spaces === 1
+                ? " space left"
+                : " spaces left"
+            );
+
+        }
+
+        else {
+
+          availability.textContent =
+            "Available";
+
+        }
+
+
+        const button =
+          document.createElement(
+            "button"
+          );
+
+
+        button.textContent =
+          full
+            ? "Class full"
+            : "Book this class";
+
+
+        button.disabled =
+          full;
+
+
+        button.onclick =
+          function() {
+
+            if (full) {
+              return;
+            }
+
+
+            window.location.href =
+              "./login.html";
+
+          };
+
+
+        content.append(
+          dateLabel,
+          title
+        );
+
+
+        if (session.level) {
+
+          content.appendChild(
+            level
+          );
+
+        }
+
+
+        if (session.venue) {
+
+          content.appendChild(
+            venue
+          );
+
+        }
+
+
+        content.append(
+          availability,
+          button
+        );
+
+
+        card.appendChild(
+          content
+        );
+
+
+        list.appendChild(
+          card
+        );
+
       }
+    );
 
-      const card = document.createElement("div");
-      card.className = "card";
 
-      card.innerHTML = `
-        <img
-          class="card-image"
-          src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/crop/x_31,y_49,w_2939,h_1951/fill/w_980,h_651,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC06591_JPG.jpg"
-          alt="Mat Pilates class"
-        >
-        <div class="card-content">
-          <div class="tag">${session[0]} · ${session[1]}</div>
-          <h3>${session[2]}</h3>
-          <p>${session[3]}</p>
-        </div>
-      `;
+    if (shown === 0) {
 
-      const content = card.querySelector(".card-content");
+      list.innerHTML =
+        `
+          <div class="notice">
+            No upcoming classes are currently listed for this day.
+          </div>
+        `;
 
-      const button = document.createElement("button");
-      button.className = "outline";
-      button.textContent = "Enquire about this class";
+    }
 
-      button.onclick = function() {
-        chosenClass = index;
-
-        document.getElementById("classSummary").textContent =
-          session[0] + " " + session[1] + " — " + session[2] + " · " + session[3];
-
-        showPage("classEnquiry");
-      };
-
-      content.appendChild(button);
-      list.appendChild(card);
-    });
   }
 
-  document
-    .getElementById("classForm")
-    .addEventListener("submit", function(event) {
-      event.preventDefault();
 
-      if (chosenClass === null) {
-        return;
-      }
-
-      const session = sessions[chosenClass];
-      const name = document.getElementById("className").value;
-      const email = document.getElementById("classEmail").value;
-      const type = document.getElementById("classType").value;
-
-      const subject = encodeURIComponent("Mat Pilates class enquiry");
-
-      const body = encodeURIComponent(
-        "Name: " + name +
-        "\n\nEmail: " + email +
-        "\n\nClass: " + session.join(" | ") +
-        "\n\nEnquiry: " + type
-      );
-
-      window.location.href =
-        "mailto:heidi@heidimonsen.co.uk?subject=" + subject + "&body=" + body;
-    });
 
   document
-    .getElementById("reformerForm")
-    .addEventListener("submit", function(event) {
-      event.preventDefault();
+    .getElementById(
+      "reformerForm"
+    )
+    .addEventListener(
+      "submit",
+      function(event) {
 
-      const name = document.getElementById("rName").value;
-      const email = document.getElementById("rEmail").value;
-      const phone = document.getElementById("rPhone").value;
-      const type = document.getElementById("rType").value;
-      const message = document.getElementById("rMessage").value;
+        event.preventDefault();
 
-      const subject = encodeURIComponent("Private Reformer Pilates enquiry");
 
-      const body = encodeURIComponent(
-        "Name: " + name +
-        "\n\nEmail: " + email +
-        "\n\nPhone: " + phone +
-        "\n\nSession: " + type +
-        "\n\nMessage: " + message
-      );
+        const name =
+          document
+            .getElementById(
+              "rName"
+            )
+            .value;
 
-      window.location.href =
-        "mailto:heidi@heidimonsen.co.uk?subject=" + subject + "&body=" + body;
-    });
 
-  drawClasses();
-  showPage("home");
+        const email =
+          document
+            .getElementById(
+              "rEmail"
+            )
+            .value;
 
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", async function() {
-      try {
-        const registration = await navigator.serviceWorker.register("./sw.js");
-        registration.update();
-      } catch (error) {
-        console.log("Service worker unavailable", error);
+
+        const phone =
+          document
+            .getElementById(
+              "rPhone"
+            )
+            .value;
+
+
+        const type =
+          document
+            .getElementById(
+              "rType"
+            )
+            .value;
+
+
+        const message =
+          document
+            .getElementById(
+              "rMessage"
+            )
+            .value;
+
+
+        const subject =
+          encodeURIComponent(
+            "Private Reformer Pilates enquiry"
+          );
+
+
+        const body =
+          encodeURIComponent(
+
+            "Name: " +
+            name +
+
+            "\n\nEmail: " +
+            email +
+
+            "\n\nPhone: " +
+            phone +
+
+            "\n\nSession: " +
+            type +
+
+            "\n\nMessage: " +
+            message
+
+          );
+
+
+        window.location.href =
+          "mailto:heidi@heidimonsen.co.uk" +
+          "?subject=" +
+          subject +
+          "&body=" +
+          body;
+
       }
-    });
+    );
+
+
+
+  /*
+    Initial load
+  */
+
+  loadClasses();
+
+
+
+  /*
+    Automatically refresh availability
+    every 60 seconds while the app is open.
+  */
+
+  setInterval(
+    loadClasses,
+    60000
+  );
+
+
+
+  /*
+    Service worker update check
+  */
+
+  if (
+    "serviceWorker" in navigator
+  ) {
+
+    window.addEventListener(
+      "load",
+      async function() {
+
+        try {
+
+          const registration =
+            await navigator
+              .serviceWorker
+              .register(
+                "./sw.js"
+              );
+
+
+          registration.update();
+
+        }
+
+        catch (error) {
+
+          console.log(
+            error
+          );
+
+        }
+
+      }
+    );
+
   }
+
 </script>
 
 </body>
+
 </html>
