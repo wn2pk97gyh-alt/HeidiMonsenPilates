@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login | Heidi Monsen Pilates</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f5f2ec;
+      color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin: 8px 0 28px;
+      color: #666;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      background: #eeeae3;
+      padding: 5px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .tab {
+      flex: 1;
+      border: 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: transparent;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: white;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .main-btn {
+      width: 100%;
+      border: 0;
+      margin-top: 22px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #4f6657;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .main-btn:disabled {
+      opacity: 0.6;
+    }
+
+    .message {
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      display: none;
+      line-height: 1.4;
+    }
+
+    .success {
+      display: block;
+      background: #e7f5eb;
+      color: #245c35;
+    }
+
+    .error {
+      display: block;
+      background: #fdeaea;
+      color: #8b2525;
+    }
+
+    .account {
+      text-align: center;
+    }
+
+    .account h2 {
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .home {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #4f6657;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div id="authScreen">
+
+      <h1>Heidi Monsen Pilates</h1>
+      <p class="subtitle">Your Pilates account</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="tab active" onclick="showLogin()">
+          Log in
+        </button>
+
+        <button id="signupTab" class="tab" onclick="showSignup()">
+          Create account
+        </button>
+      </div>
+
+      <div id="loginForm">
+
+        <label>Email</label>
+        <input
+          id="loginEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+        >
+
+        <label>Password</label>
+        <input
+          id="loginPassword"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Your password"
+        >
+
+        <button id="loginButton" class="main-btn" onclick="login()">
+          Log in
+        </button>
+
+      </div>
+
+      <div id="signupForm" class="hidden">
+
+        <label>Full name</label>
+        <input
+          id="signupName"
+          type="text"
+          autocomplete="name"
+          placeholder="Your name"
+        >
+
+        <label>Email</label>
+        <input
+          id="signupEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+        >
+
+        <label>Password</label>
+        <input
+          id="signupPassword"
+          type="password"
+          autocomplete="new-password"
+          placeholder="Create a password"
+        >
+
+        <button id="signupButton" class="main-btn" onclick="signup()">
+          Create account
+        </button>
+
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <a class="home" href="./index.html">
+        ← Back to Heidi Monsen Pilates
+      </a>
+
+    </div>
+
+
+    <div id="accountScreen" class="account hidden">
+
+      <h1>Heidi Monsen Pilates</h1>
+
+      <h2>Welcome 👋</h2>
+
+      <p>
+        You are logged in as
+      </p>
+
+      <strong id="userEmail"></strong>
+
+      <button class="main-btn" onclick="goToApp()">
+        Continue to classes
+      </button>
+
+      <button
+        class="main-btn"
+        style="background:#777;"
+        onclick="logout()"
+      >
+        Log out
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="./supabase-config.js"></script>
+
+  <script>
+
+    const message = document.getElementById("message");
+
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = "message " + type;
+    }
+
+
+    function clearMessage() {
+      message.textContent = "";
+      message.className = "message";
+    }
+
+
+    function showLogin() {
+
+      clearMessage();
+
+      document.getElementById("loginForm").classList.remove("hidden");
+      document.getElementById("signupForm").classList.add("hidden");
+
+      document.getElementById("loginTab").classList.add("active");
+      document.getElementById("signupTab").classList.remove("active");
+    }
+
+
+    function showSignup() {
+
+      clearMessage();
+
+      document.getElementById("signupForm").classList.remove("hidden");
+      document.getElementById("loginForm").classList.add("hidden");
+
+      document.getElementById("signupTab").classList.add("active");
+      document.getElementById("loginTab").classList.remove("active");
+    }
+
+
+    async function signup() {
+
+      clearMessage();
+
+      const name =
+        document.getElementById("signupName").value.trim();
+
+      const email =
+        document.getElementById("signupEmail").value.trim();
+
+      const password =
+        document.getElementById("signupPassword").value;
+
+
+      if (!name || !email || !password) {
+        showMessage(
+          "Please complete all fields.",
+          "error"
+        );
+        return;
+      }
+
+
+      if (password.length < 8) {
+        showMessage(
+          "Please use a password with at least 8 characters.",
+          "error"
+        );
+        return;
+      }
+
+
+      const button =
+        document.getElementById("signupButton");
+
+      button.disabled = true;
+      button.textContent = "Creating account...";
+
+
+      const { data, error } =
+        await supabaseClient.auth.signUp({
+
+          email: email,
+
+          password: password,
+
+          options: {
+
+            data: {
+              full_name: name
+            },
+
+            emailRedirectTo:
+              window.location.origin +
+              "/HeidiMonsenPilates/login.html"
+          }
+
+        });
+
+
+      button.disabled = false;
+      button.textContent = "Create account";
+
+
+      if (error) {
+
+        showMessage(
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      showMessage(
+        "Account created. Check your email and tap the confirmation link before logging in.",
+        "success"
+      );
+
+    }
+
+
+
+    async function login() {
+
+      clearMessage();
+
+
+      const email =
+        document.getElementById("loginEmail").value.trim();
+
+      const password =
+        document.getElementById("loginPassword").value;
+
+
+      if (!email || !password) {
+
+        showMessage(
+          "Enter your email and password.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      const button =
+        document.getElementById("loginButton");
+
+      button.disabled = true;
+      button.textContent = "Logging in...";
+
+
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+
+          email: email,
+
+          password: password
+
+        });
+
+
+      button.disabled = false;
+      button.textContent = "Log in";
+
+
+      if (error) {
+
+        showMessage(
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      showAccount(data.user);
+
+    }
+
+
+
+    async function logout() {
+
+      await supabaseClient.auth.signOut();
+
+      document
+        .getElementById("accountScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("authScreen")
+        .classList.remove("hidden");
+
+      showLogin();
+
+    }
+
+
+
+    function showAccount(user) {
+
+      document
+        .getElementById("authScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("accountScreen")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("userEmail")
+        .textContent = user.email;
+
+    }
+
+
+
+    function goToApp() {
+
+      window.location.href = "./index.html";
+
+    }
+
+
+
+    async function checkSession() {
+
+      const { data } =
+        await supabaseClient.auth.getSession();
+
+
+      if (data.session) {
+
+        showAccount(data.session.user);
+
+      }
+
+    }
+
+
+    checkSession();
+
+  </script>
+
+</body>
+</html>
