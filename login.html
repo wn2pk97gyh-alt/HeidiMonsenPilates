@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 
 <head>
-
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width,initial-scale=1"
   >
 
   <meta
@@ -16,10 +14,7 @@
     content="#f6dfe6"
   >
 
-  <title>
-    My Account | Heidi Monsen Pilates
-  </title>
-
+  <title>My Account | Heidi Monsen Pilates</title>
 
   <style>
 
@@ -59,7 +54,7 @@
 
     .brand {
       text-align: center;
-      margin: 20px 0 25px;
+      margin: 15px 0 20px;
     }
 
     .brand-name {
@@ -73,6 +68,29 @@
       letter-spacing: 3px;
       color: var(--muted);
       margin-top: 5px;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .top-links a {
+      flex: 1;
+      padding: 11px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--pink-dark);
+      background: white;
+      border: 1px solid #dcb4c1;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .top-links a.active {
+      background: #f8e8ed;
+      font-weight: bold;
     }
 
     .card {
@@ -126,6 +144,7 @@
       padding: 12px;
       border-radius: 9px;
       font-size: 15px;
+      margin: 0;
     }
 
     .tab.active {
@@ -165,7 +184,8 @@
       display: block;
     }
 
-    button.secondary {
+    button.secondary,
+    .btn.secondary {
       background: transparent;
       color: var(--pink-dark);
       border: 1px solid #dcb4c1;
@@ -173,9 +193,8 @@
 
     button.danger {
       background: transparent;
-      border: 1px solid #e5b8c0;
       color: var(--red);
-      margin-top: 12px;
+      border: 1px solid #e5b8c0;
     }
 
     button:disabled {
@@ -230,17 +249,13 @@
       line-height: 1.5;
     }
 
-    .pending {
+    .notice {
       background: #fdf3f6;
-      border: 1px solid #e8cad3;
-    }
-
-    .home-link {
-      text-align: center;
-      display: block;
-      margin: 18px 0 30px;
-      color: #9f6276;
-      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 13px;
+      border-radius: 11px;
+      margin-bottom: 15px;
+      font-size: 13px;
     }
 
   </style>
@@ -265,7 +280,27 @@
   </div>
 
 
-  <!-- LOGIN / SIGNUP -->
+  <div class="top-links">
+
+    <a href="./index.html">
+      Home
+    </a>
+
+    <a href="./index.html?classes=1">
+      Classes
+    </a>
+
+    <a
+      href="./login.html"
+      class="active"
+    >
+      Account
+    </a>
+
+  </div>
+
+
+  <!-- AUTH SCREEN -->
 
   <div
     id="authScreen"
@@ -275,6 +310,14 @@
     <h1>
       My Account
     </h1>
+
+
+    <div
+      id="returnNotice"
+      class="notice hidden"
+    >
+      Log in or create an account to continue your booking.
+    </div>
 
 
     <div class="tabs">
@@ -388,7 +431,7 @@
   </div>
 
 
-  <!-- ACCOUNT -->
+  <!-- ACCOUNT SCREEN -->
 
   <div
     id="accountScreen"
@@ -410,42 +453,26 @@
         class="email"
       ></p>
 
-    </div>
 
+      <div
+        id="continueBookingArea"
+        class="hidden"
+      >
 
-    <!-- PENDING BOOKING -->
+        <div class="notice">
+          You have a booking in progress.
+        </div>
 
-    <div
-      id="pendingCard"
-      class="card pending hidden"
-    >
+        <button
+          onclick="returnToBooking()"
+        >
+          Continue booking
+        </button>
 
-      <h2>
-        Finish your booking
-      </h2>
-
-      <div id="pendingDetails">
-        Loading class...
       </div>
 
-      <button
-        id="confirmBookingButton"
-        onclick="confirmPendingBooking()"
-      >
-        Confirm booking
-      </button>
-
-      <button
-        class="secondary"
-        onclick="clearPendingBooking()"
-      >
-        Not now
-      </button>
-
     </div>
 
-
-    <!-- BOOKINGS -->
 
     <div class="card">
 
@@ -462,12 +489,19 @@
 
     <div class="card">
 
-      <button
-        class="secondary"
-        onclick="goToClasses()"
+      <a
+        class="btn secondary"
+        href="./index.html?classes=1"
       >
         Browse classes
-      </button>
+      </a>
+
+      <a
+        class="btn secondary"
+        href="./index.html"
+      >
+        Back to home
+      </a>
 
       <button
         class="danger"
@@ -480,18 +514,11 @@
 
   </div>
 
-
-  <a
-    class="home-link"
-    href="./index.html"
-  >
-    ← Back to Heidi Monsen Pilates
-  </a>
-
 </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
 <script src="./supabase-config.js"></script>
 
 
@@ -503,8 +530,28 @@
     );
 
 
-  let pendingSessionId =
-    null;
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const returnMode =
+    params.get("return");
+
+
+  if (
+    returnMode === "booking"
+  ) {
+
+    document
+      .getElementById(
+        "returnNotice"
+      )
+      .classList
+      .remove("hidden");
+
+  }
 
 
   function showMessage(
@@ -723,7 +770,7 @@
         data.session
       ) {
 
-        showAccount(
+        await showAccount(
           data.user
         );
 
@@ -835,6 +882,17 @@
       }
 
 
+      if (
+        returnMode === "booking"
+      ) {
+
+        returnToBooking();
+
+        return;
+
+      }
+
+
       await showAccount(
         data.user
       );
@@ -893,227 +951,35 @@
         user.email;
 
 
-    await loadPendingBooking();
-
-    await loadBookings();
-
-  }
-
-
-  async function loadPendingBooking() {
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const urlSession =
-      params.get("session");
-
-
-    const storedSession =
+    const pendingSession =
       localStorage.getItem(
         "pendingPilatesSession"
       );
 
 
-    pendingSessionId =
-      urlSession ||
-      storedSession;
-
-
     if (
-      !pendingSessionId
+      pendingSession
     ) {
 
       document
         .getElementById(
-          "pendingCard"
+          "continueBookingArea"
+        )
+        .classList
+        .remove("hidden");
+
+    }
+
+    else {
+
+      document
+        .getElementById(
+          "continueBookingArea"
         )
         .classList
         .add("hidden");
 
-
-      return;
-
     }
-
-
-    localStorage.setItem(
-      "pendingPilatesSession",
-      pendingSessionId
-    );
-
-
-    const { data, error } =
-      await supabaseClient
-        .from("class_sessions")
-        .select("*")
-        .eq(
-          "id",
-          pendingSessionId
-        )
-        .single();
-
-
-    if (
-      error ||
-      !data
-    ) {
-
-      clearPendingBooking();
-
-      return;
-
-    }
-
-
-    const date =
-      new Date(
-        data.class_date +
-        "T12:00:00"
-      );
-
-
-    const formattedDate =
-      date.toLocaleDateString(
-        "en-GB",
-        {
-          weekday:
-            "long",
-
-          day:
-            "numeric",
-
-          month:
-            "long"
-        }
-      );
-
-
-    document
-      .getElementById(
-        "pendingDetails"
-      )
-      .innerHTML =
-        `
-          <strong>
-            ${escapeHtml(
-              data.level ||
-              data.class_name ||
-              "Mat Pilates"
-            )}
-          </strong>
-
-          <p>
-            ${escapeHtml(
-              formattedDate
-            )}
-            at
-            ${escapeHtml(
-              data.start_time
-                .substring(0,5)
-            )}
-          </p>
-
-          <p>
-            ${escapeHtml(
-              data.venue || ""
-            )}
-          </p>
-        `;
-
-
-    document
-      .getElementById(
-        "pendingCard"
-      )
-      .classList
-      .remove("hidden");
-
-  }
-
-
-  async function confirmPendingBooking() {
-
-    if (
-      !pendingSessionId
-    ) {
-      return;
-    }
-
-
-    const button =
-      document.getElementById(
-        "confirmBookingButton"
-      );
-
-
-    button.disabled =
-      true;
-
-
-    button.textContent =
-      "Booking...";
-
-
-    const { error } =
-      await supabaseClient.rpc(
-        "book_class",
-        {
-          p_session_id:
-            pendingSessionId
-        }
-      );
-
-
-    button.disabled =
-      false;
-
-
-    button.textContent =
-      "Confirm booking";
-
-
-    if (error) {
-
-      alert(
-        error.message
-      );
-
-      return;
-
-    }
-
-
-    localStorage.removeItem(
-      "pendingPilatesSession"
-    );
-
-
-    pendingSessionId =
-      null;
-
-
-    document
-      .getElementById(
-        "pendingCard"
-      )
-      .classList
-      .add("hidden");
-
-
-    window.history.replaceState(
-      {},
-      "",
-      "./login.html"
-    );
-
-
-    alert(
-      "Booking confirmed."
-    );
 
 
     await loadBookings();
@@ -1121,30 +987,31 @@
   }
 
 
-  function clearPendingBooking() {
+  function returnToBooking() {
 
-    localStorage.removeItem(
-      "pendingPilatesSession"
-    );
-
-
-    pendingSessionId =
-      null;
+    const sessionId =
+      localStorage.getItem(
+        "pendingPilatesSession"
+      );
 
 
-    document
-      .getElementById(
-        "pendingCard"
-      )
-      .classList
-      .add("hidden");
+    if (
+      !sessionId
+    ) {
+
+      window.location.href =
+        "./index.html?classes=1";
+
+      return;
+
+    }
 
 
-    window.history.replaceState(
-      {},
-      "",
-      "./login.html"
-    );
+    window.location.href =
+      "./booking.html?session=" +
+      encodeURIComponent(
+        sessionId
+      );
 
   }
 
@@ -1161,6 +1028,10 @@
       "Loading bookings...";
 
 
+    const today =
+      getToday();
+
+
     const { data, error } =
       await supabaseClient
         .from("class_bookings")
@@ -1168,6 +1039,7 @@
           id,
           session_id,
           status,
+          booking_type,
           booked_at,
           class_sessions (
             id,
@@ -1201,13 +1073,18 @@
 
     const bookings =
       (data || [])
+
         .filter(
           function(booking) {
 
-            return booking.class_sessions;
+            return (
+              booking.class_sessions &&
+              booking.class_sessions.class_date >= today
+            );
 
           }
         )
+
         .sort(
           function(a, b) {
 
@@ -1231,7 +1108,8 @@
         );
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+      "";
 
 
     if (
@@ -1243,6 +1121,13 @@
           <p>
             You don't have any upcoming bookings yet.
           </p>
+
+          <a
+            class="btn secondary"
+            href="./index.html?classes=1"
+          >
+            Find a class
+          </a>
         `;
 
 
@@ -1291,6 +1176,12 @@
           "booking";
 
 
+        const bookingType =
+          booking.booking_type === "course"
+            ? "Course booking"
+            : "PAYG";
+
+
         box.innerHTML =
           `
             <div class="booking-date">
@@ -1308,19 +1199,24 @@
             </h3>
 
             <div class="booking-meta">
+
               ${escapeHtml(
-                session.start_time.substring(
-                  0,
-                  5
-                )
+                session.start_time
+                  .substring(
+                    0,
+                    5
+                  )
               )}
+
               ·
+
               ${escapeHtml(
                 String(
                   session.duration_minutes ||
                   55
                 )
               )}
+
               minutes
 
               <br>
@@ -1328,6 +1224,13 @@
               ${escapeHtml(
                 session.venue || ""
               )}
+
+              <br>
+
+              ${escapeHtml(
+                bookingType
+              )}
+
             </div>
           `;
 
@@ -1445,10 +1348,41 @@
   }
 
 
-  function goToClasses() {
+  function getToday() {
 
-    window.location.href =
-      "./index.html?classes=1";
+    const now =
+      new Date();
+
+
+    const year =
+      now.getFullYear();
+
+
+    const month =
+      String(
+        now.getMonth() + 1
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    const day =
+      String(
+        now.getDate()
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    return (
+      year +
+      "-" +
+      month +
+      "-" +
+      day
+    );
 
   }
 
@@ -1460,22 +1394,27 @@
     return String(
       value ?? ""
     )
+
       .replaceAll(
         "&",
         "&amp;"
       )
+
       .replaceAll(
         "<",
         "&lt;"
       )
+
       .replaceAll(
         ">",
         "&gt;"
       )
+
       .replaceAll(
         '"',
         "&quot;"
       )
+
       .replaceAll(
         "'",
         "&#039;"
@@ -1497,6 +1436,17 @@
       data.session
     ) {
 
+      if (
+        returnMode === "booking"
+      ) {
+
+        returnToBooking();
+
+        return;
+
+      }
+
+
       await showAccount(
         data.session.user
       );
@@ -1504,29 +1454,6 @@
     }
 
   }
-
-
-  supabaseClient
-    .auth
-    .onAuthStateChange(
-      async function(
-        event,
-        session
-      ) {
-
-        if (
-          session &&
-          session.user
-        ) {
-
-          await showAccount(
-            session.user
-          );
-
-        }
-
-      }
-    );
 
 
   checkSession();
