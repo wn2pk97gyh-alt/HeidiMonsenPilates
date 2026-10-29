@@ -3,12 +3,31 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#e9ede6">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#e9ede6"
+  >
+
+  <meta
+    name="description"
+    content="Heidi Monsen Pilates"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.webmanifest"
+  >
 
   <title>Heidi Monsen Pilates</title>
 
   <style>
+
     :root {
       font-family: Arial, sans-serif;
       color: #354538;
@@ -97,9 +116,12 @@
       letter-spacing: 1px;
     }
 
-    .muted {
+    .notice {
+      background: #e9eee5;
+      padding: 14px;
+      border-radius: 8px;
       font-size: 13px;
-      color: #748173;
+      color: #516852;
     }
 
     button,
@@ -156,6 +178,7 @@
       background: white;
       display: flex;
       border-top: 1px solid #dce3d8;
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     nav button,
@@ -171,41 +194,41 @@
       border: 0;
     }
 
-    nav button.active {
-      color: #304d36;
-      font-weight: bold;
-      background: #edf2e9;
-    }
-
     .hidden {
       display: none;
-    }
-
-    .notice {
-      background: #e9eee5;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #516852;
     }
 
     a {
       color: #476b4e;
     }
+
   </style>
+
 </head>
+
 
 <body>
 
 <main>
 
   <header>
+
     <div>
-      <div class="brand">HEIDI MONSEN</div>
-      <div class="sub">P I L A T E S</div>
+
+      <div class="brand">
+        HEIDI MONSEN
+      </div>
+
+      <div class="sub">
+        P I L A T E S
+      </div>
+
     </div>
 
-    <span style="font-size:25px">✿</span>
+    <span style="font-size:25px">
+      ✿
+    </span>
+
   </header>
 
 
@@ -239,11 +262,13 @@
 
     <div class="card">
 
-      <h2>Mat Pilates</h2>
+      <h2>
+        Mat Pilates
+      </h2>
 
       <p>
         Browse the weekly timetable and enquire about
-        term places or available drop-in sessions.
+        term places or drop-in sessions.
       </p>
 
       <button
@@ -258,10 +283,13 @@
 
     <div class="card">
 
-      <h2>Private Reformer Pilates</h2>
+      <h2>
+        Private Reformer Pilates
+      </h2>
 
       <p>
-        Tailored private sessions with Heidi.
+        Tailored private sessions arranged directly
+        with Heidi.
       </p>
 
       <button
@@ -276,10 +304,13 @@
 
     <div class="card">
 
-      <h2>Your Account</h2>
+      <h2>
+        Your Account
+      </h2>
 
       <p>
-        Log in or create your Heidi Monsen Pilates account.
+        Create an account or log in to your
+        Heidi Monsen Pilates account.
       </p>
 
       <a
@@ -311,7 +342,7 @@
 
     <div class="notice">
       Online booking will be added next.
-      For now, you can enquire about a class.
+      For now you can enquire about a class.
     </div>
 
 
@@ -323,14 +354,12 @@
       id="filter"
       onchange="drawClasses()"
     >
-
       <option>All days</option>
       <option>Monday</option>
       <option>Tuesday</option>
       <option>Wednesday</option>
       <option>Thursday</option>
       <option>Friday</option>
-
     </select>
 
 
@@ -353,11 +382,9 @@
       ← Timetable
     </button>
 
-
     <h2>
       Class enquiry
     </h2>
-
 
     <div
       id="classSummary"
@@ -431,7 +458,6 @@
     <h2>
       Reformer session enquiry
     </h2>
-
 
     <p>
       Private reformer sessions are arranged directly
@@ -522,18 +548,18 @@
       Contact Heidi
     </h2>
 
-
     <div class="card">
 
       <p>
-        Questions about classes, private Pilates
-        or availability?
+        Questions about classes,
+        availability or private sessions?
       </p>
 
       <a
         class="btn"
         href="https://www.pilatesguildford.co.uk/contact"
         target="_blank"
+        rel="noopener"
       >
         Contact Heidi
       </a>
@@ -543,44 +569,37 @@
   </section>
 
 
-  <!-- BOTTOM MENU -->
+  <!-- NAVIGATION -->
 
   <nav>
 
-    <button
-      id="homeNav"
-      onclick="showPage('home')"
-    >
-      ⌂<br>Home
+    <button onclick="showPage('home')">
+      ⌂<br>
+      Home
     </button>
 
 
-    <button
-      id="classesNav"
-      onclick="showPage('classes')"
-    >
-      ▦<br>Classes
+    <button onclick="showPage('classes')">
+      ▦<br>
+      Classes
     </button>
 
 
-    <button
-      id="reformerNav"
-      onclick="showPage('reformer')"
-    >
-      ♡<br>Reformer
+    <button onclick="showPage('reformer')">
+      ♡<br>
+      Reformer
     </button>
 
 
-    <button
-      id="contactNav"
-      onclick="showPage('contact')"
-    >
-      ✉<br>Contact
+    <button onclick="showPage('contact')">
+      ✉<br>
+      Contact
     </button>
 
 
     <a href="./login.html">
-      ◯<br>Account
+      ◯<br>
+      Account
     </a>
 
   </nav>
@@ -670,24 +689,22 @@
 
   function showPage(pageId) {
 
-    const sections =
-      document.querySelectorAll("main > section");
+    document
+      .querySelectorAll("main > section")
+      .forEach(function(section) {
+
+        section.classList.add("hidden");
+
+      });
 
 
-    sections.forEach(function(section) {
-
-      section.classList.add("hidden");
-
-    });
-
-
-    const selected =
+    const page =
       document.getElementById(pageId);
 
 
-    if (selected) {
+    if (page) {
 
-      selected.classList.remove("hidden");
+      page.classList.remove("hidden");
 
     }
 
@@ -699,7 +716,7 @@
 
   function drawClasses() {
 
-    const filter =
+    const selectedDay =
       document.getElementById("filter").value;
 
 
@@ -713,8 +730,8 @@
     sessions.forEach(function(session, index) {
 
       if (
-        filter !== "All days" &&
-        session[0] !== filter
+        selectedDay !== "All days" &&
+        session[0] !== selectedDay
       ) {
 
         return;
@@ -726,22 +743,38 @@
         document.createElement("div");
 
 
-      card.className = "card";
+      card.className =
+        "card";
 
 
-      card.innerHTML = `
-        <div class="tag">
-          ${session[0]} · ${session[1]}
-        </div>
+      const top =
+        document.createElement("div");
 
-        <h3>
-          ${session[2]}
-        </h3>
 
-        <p>
-          ${session[3]}
-        </p>
-      `;
+      top.className =
+        "tag";
+
+
+      top.textContent =
+        session[0] +
+        " · " +
+        session[1];
+
+
+      const title =
+        document.createElement("h3");
+
+
+      title.textContent =
+        session[2];
+
+
+      const place =
+        document.createElement("p");
+
+
+      place.textContent =
+        session[3];
 
 
       const button =
@@ -759,7 +792,8 @@
       button.onclick =
         function() {
 
-          chosenClass = index;
+          chosenClass =
+            index;
 
 
           document
@@ -779,7 +813,13 @@
         };
 
 
-      card.appendChild(button);
+      card.append(
+        top,
+        title,
+        place,
+        button
+      );
+
 
       list.appendChild(card);
 
@@ -807,15 +847,21 @@
 
 
         const name =
-          document.getElementById("className").value;
+          document.getElementById(
+            "className"
+          ).value;
 
 
         const email =
-          document.getElementById("classEmail").value;
+          document.getElementById(
+            "classEmail"
+          ).value;
 
 
         const type =
-          document.getElementById("classType").value;
+          document.getElementById(
+            "classType"
+          ).value;
 
 
         const subject =
@@ -826,11 +872,14 @@
 
         const body =
           encodeURIComponent(
-            "Name: " + name +
-            "\n\nEmail: " + email +
+            "Name: " +
+            name +
+            "\n\nEmail: " +
+            email +
             "\n\nClass: " +
             session.join(" | ") +
-            "\n\nEnquiry: " + type
+            "\n\nEnquiry: " +
+            type
           );
 
 
@@ -855,23 +904,33 @@
 
 
         const name =
-          document.getElementById("rName").value;
+          document.getElementById(
+            "rName"
+          ).value;
 
 
         const email =
-          document.getElementById("rEmail").value;
+          document.getElementById(
+            "rEmail"
+          ).value;
 
 
         const phone =
-          document.getElementById("rPhone").value;
+          document.getElementById(
+            "rPhone"
+          ).value;
 
 
         const type =
-          document.getElementById("rType").value;
+          document.getElementById(
+            "rType"
+          ).value;
 
 
         const message =
-          document.getElementById("rMessage").value;
+          document.getElementById(
+            "rMessage"
+          ).value;
 
 
         const subject =
@@ -882,11 +941,16 @@
 
         const body =
           encodeURIComponent(
-            "Name: " + name +
-            "\n\nEmail: " + email +
-            "\n\nPhone: " + phone +
-            "\n\nSession: " + type +
-            "\n\nMessage: " + message
+            "Name: " +
+            name +
+            "\n\nEmail: " +
+            email +
+            "\n\nPhone: " +
+            phone +
+            "\n\nSession: " +
+            type +
+            "\n\nMessage: " +
+            message
           );
 
 
@@ -905,7 +969,48 @@
 
   showPage("home");
 
+
+  /*
+    Service worker update handling.
+
+    This tells the browser to check for a newer
+    version of the app whenever the page loads.
+  */
+
+  if ("serviceWorker" in navigator) {
+
+    window.addEventListener(
+      "load",
+      async function() {
+
+        try {
+
+          const registration =
+            await navigator.serviceWorker.register(
+              "./sw.js"
+            );
+
+
+          registration.update();
+
+        }
+
+        catch (error) {
+
+          console.log(
+            "Service worker unavailable",
+            error
+          );
+
+        }
+
+      }
+    );
+
+  }
+
 </script>
 
 </body>
+
 </html>
