@@ -99,6 +99,19 @@
       opacity: 0.6;
     }
 
+    .secondary-btn {
+      width: 100%;
+      border: 0;
+      margin-top: 12px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #777;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .message {
       margin-top: 18px;
       padding: 12px;
@@ -151,18 +164,30 @@
       <p class="subtitle">Your Pilates account</p>
 
       <div class="tabs">
-        <button id="loginTab" class="tab active" onclick="showLogin()">
+
+        <button
+          id="loginTab"
+          class="tab active"
+          onclick="showLogin()"
+        >
           Log in
         </button>
 
-        <button id="signupTab" class="tab" onclick="showSignup()">
+        <button
+          id="signupTab"
+          class="tab"
+          onclick="showSignup()"
+        >
           Create account
         </button>
+
       </div>
+
 
       <div id="loginForm">
 
         <label>Email</label>
+
         <input
           id="loginEmail"
           type="email"
@@ -170,7 +195,9 @@
           placeholder="you@example.com"
         >
 
+
         <label>Password</label>
+
         <input
           id="loginPassword"
           type="password"
@@ -178,15 +205,22 @@
           placeholder="Your password"
         >
 
-        <button id="loginButton" class="main-btn" onclick="login()">
+
+        <button
+          id="loginButton"
+          class="main-btn"
+          onclick="login()"
+        >
           Log in
         </button>
 
       </div>
 
+
       <div id="signupForm" class="hidden">
 
         <label>Full name</label>
+
         <input
           id="signupName"
           type="text"
@@ -194,7 +228,9 @@
           placeholder="Your name"
         >
 
+
         <label>Email</label>
+
         <input
           id="signupEmail"
           type="email"
@@ -202,7 +238,9 @@
           placeholder="you@example.com"
         >
 
+
         <label>Password</label>
+
         <input
           id="signupPassword"
           type="password"
@@ -210,13 +248,20 @@
           placeholder="Create a password"
         >
 
-        <button id="signupButton" class="main-btn" onclick="signup()">
+
+        <button
+          id="signupButton"
+          class="main-btn"
+          onclick="signup()"
+        >
           Create account
         </button>
 
       </div>
 
+
       <div id="message" class="message"></div>
+
 
       <a class="home" href="./index.html">
         ← Back to Heidi Monsen Pilates
@@ -225,25 +270,26 @@
     </div>
 
 
+
     <div id="accountScreen" class="account hidden">
 
       <h1>Heidi Monsen Pilates</h1>
 
       <h2>Welcome 👋</h2>
 
-      <p>
-        You are logged in as
-      </p>
+      <p>You are logged in as</p>
 
       <strong id="userEmail"></strong>
 
-      <button class="main-btn" onclick="goToApp()">
+      <button
+        class="main-btn"
+        onclick="goToApp()"
+      >
         Continue to classes
       </button>
 
       <button
-        class="main-btn"
-        style="background:#777;"
+        class="secondary-btn"
         onclick="logout()"
       >
         Log out
@@ -259,18 +305,23 @@
 
   <script>
 
-    const message = document.getElementById("message");
+    const message =
+      document.getElementById("message");
 
 
     function showMessage(text, type) {
+
       message.textContent = text;
       message.className = "message " + type;
+
     }
 
 
     function clearMessage() {
+
       message.textContent = "";
       message.className = "message";
+
     }
 
 
@@ -278,11 +329,22 @@
 
       clearMessage();
 
-      document.getElementById("loginForm").classList.remove("hidden");
-      document.getElementById("signupForm").classList.add("hidden");
+      document
+        .getElementById("loginForm")
+        .classList.remove("hidden");
 
-      document.getElementById("loginTab").classList.add("active");
-      document.getElementById("signupTab").classList.remove("active");
+      document
+        .getElementById("signupForm")
+        .classList.add("hidden");
+
+      document
+        .getElementById("loginTab")
+        .classList.add("active");
+
+      document
+        .getElementById("signupTab")
+        .classList.remove("active");
+
     }
 
 
@@ -290,11 +352,22 @@
 
       clearMessage();
 
-      document.getElementById("signupForm").classList.remove("hidden");
-      document.getElementById("loginForm").classList.add("hidden");
+      document
+        .getElementById("signupForm")
+        .classList.remove("hidden");
 
-      document.getElementById("signupTab").classList.add("active");
-      document.getElementById("loginTab").classList.remove("active");
+      document
+        .getElementById("loginForm")
+        .classList.add("hidden");
+
+      document
+        .getElementById("signupTab")
+        .classList.add("active");
+
+      document
+        .getElementById("loginTab")
+        .classList.remove("active");
+
     }
 
 
@@ -302,84 +375,126 @@
 
       clearMessage();
 
+
       const name =
-        document.getElementById("signupName").value.trim();
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
+
 
       const email =
-        document.getElementById("signupEmail").value.trim();
+        document
+          .getElementById("signupEmail")
+          .value
+          .trim();
+
 
       const password =
-        document.getElementById("signupPassword").value;
+        document
+          .getElementById("signupPassword")
+          .value;
 
 
       if (!name || !email || !password) {
+
         showMessage(
           "Please complete all fields.",
           "error"
         );
+
         return;
+
       }
 
 
       if (password.length < 8) {
+
         showMessage(
           "Please use a password with at least 8 characters.",
           "error"
         );
+
         return;
+
       }
 
 
       const button =
         document.getElementById("signupButton");
 
+
       button.disabled = true;
       button.textContent = "Creating account...";
 
 
-      const { data, error } =
-        await supabaseClient.auth.signUp({
+      try {
 
-          email: email,
+        const { data, error } =
+          await supabaseClient.auth.signUp({
 
-          password: password,
+            email: email,
 
-          options: {
+            password: password,
 
-            data: {
-              full_name: name
-            },
+            options: {
 
-            emailRedirectTo:
-              window.location.origin +
-              "/HeidiMonsenPilates/login.html"
-          }
+              data: {
+                full_name: name
+              }
 
-        });
+            }
 
-
-      button.disabled = false;
-      button.textContent = "Create account";
+          });
 
 
-      if (error) {
+        if (error) {
+
+          showMessage(
+            error.message,
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        if (data.session) {
+
+          showAccount(data.user);
+
+          return;
+
+        }
+
 
         showMessage(
-          error.message,
+          "Account created. Check your email and tap the confirmation link before logging in.",
+          "success"
+        );
+
+      }
+
+      catch (error) {
+
+        showMessage(
+          "Something went wrong. Please try again.",
           "error"
         );
 
-        return;
+        console.error(error);
+
       }
 
+      finally {
 
-      showMessage(
-        "Account created. Check your email and tap the confirmation link before logging in.",
-        "success"
-      );
+        button.disabled = false;
+        button.textContent = "Create account";
+
+      }
 
     }
-
 
 
     async function login() {
@@ -388,10 +503,16 @@
 
 
       const email =
-        document.getElementById("loginEmail").value.trim();
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim();
+
 
       const password =
-        document.getElementById("loginPassword").value;
+        document
+          .getElementById("loginPassword")
+          .value;
 
 
       if (!email || !password) {
@@ -402,63 +523,85 @@
         );
 
         return;
+
       }
 
 
       const button =
         document.getElementById("loginButton");
 
+
       button.disabled = true;
       button.textContent = "Logging in...";
 
 
-      const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
+      try {
 
-          email: email,
+        const { data, error } =
+          await supabaseClient.auth.signInWithPassword({
 
-          password: password
+            email: email,
 
-        });
+            password: password
 
-
-      button.disabled = false;
-      button.textContent = "Log in";
+          });
 
 
-      if (error) {
+        if (error) {
+
+          showMessage(
+            error.message,
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        showAccount(data.user);
+
+      }
+
+      catch (error) {
 
         showMessage(
-          error.message,
+          "Something went wrong. Please try again.",
           "error"
         );
 
-        return;
+        console.error(error);
+
       }
 
+      finally {
 
-      showAccount(data.user);
+        button.disabled = false;
+        button.textContent = "Log in";
+
+      }
 
     }
-
 
 
     async function logout() {
 
       await supabaseClient.auth.signOut();
 
+
       document
         .getElementById("accountScreen")
         .classList.add("hidden");
+
 
       document
         .getElementById("authScreen")
         .classList.remove("hidden");
 
+
       showLogin();
 
     }
-
 
 
     function showAccount(user) {
@@ -467,16 +610,17 @@
         .getElementById("authScreen")
         .classList.add("hidden");
 
+
       document
         .getElementById("accountScreen")
         .classList.remove("hidden");
+
 
       document
         .getElementById("userEmail")
         .textContent = user.email;
 
     }
-
 
 
     function goToApp() {
@@ -486,11 +630,19 @@
     }
 
 
-
     async function checkSession() {
 
-      const { data } =
+      const { data, error } =
         await supabaseClient.auth.getSession();
+
+
+      if (error) {
+
+        console.error(error);
+
+        return;
+
+      }
 
 
       if (data.session) {
@@ -500,6 +652,19 @@
       }
 
     }
+
+
+    supabaseClient.auth.onAuthStateChange(
+      (event, session) => {
+
+        if (session) {
+
+          showAccount(session.user);
+
+        }
+
+      }
+    );
 
 
     checkSession();
