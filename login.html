@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Login | Heidi Monsen Pilates</title>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f6dfe6"
+  >
+
+  <title>
+    My Account | Heidi Monsen Pilates
+  </title>
+
 
   <style>
+
+    :root {
+      --bg: #f8eef1;
+      --panel: #fffafb;
+      --pink: #b6788c;
+      --pink-dark: #9f6276;
+      --text: #5c4950;
+      --muted: #8b727a;
+      --line: #ecd7dd;
+      --green-bg: #e9f4eb;
+      --green: #4f7c59;
+      --red-bg: #f9e6e9;
+      --red: #a64d5c;
+
+      font-family: Arial, sans-serif;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -14,53 +46,86 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #f5f2ec;
-      color: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 540px;
+      margin: auto;
+    }
+
+    .brand {
+      text-align: center;
+      margin: 20px 0 25px;
+    }
+
+    .brand-name {
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #7d4f60;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-top: 5px;
     }
 
     .card {
-      width: 100%;
-      max-width: 430px;
       background: white;
-      border-radius: 24px;
-      padding: 32px 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(183,120,140,.07);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      color: #704957;
     }
 
     h1 {
-      margin: 0;
       text-align: center;
-      font-size: 30px;
+      margin-top: 0;
     }
 
-    .subtitle {
-      text-align: center;
-      margin: 8px 0 28px;
-      color: #666;
+    h2 {
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-bottom: 6px;
+    }
+
+    p {
+      line-height: 1.5;
     }
 
     .tabs {
       display: flex;
-      gap: 8px;
-      background: #eeeae3;
+      background: #f6e9ed;
+      border-radius: 12px;
       padding: 5px;
-      border-radius: 14px;
-      margin-bottom: 24px;
+      gap: 5px;
+      margin-bottom: 20px;
     }
 
     .tab {
       flex: 1;
       border: 0;
-      padding: 12px;
-      border-radius: 10px;
       background: transparent;
-      font-size: 16px;
-      cursor: pointer;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 15px;
     }
 
     .tab.active {
@@ -71,225 +136,341 @@
     label {
       display: block;
       margin: 14px 0 6px;
+      font-size: 13px;
       font-weight: bold;
     }
 
     input {
       width: 100%;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 12px;
+      padding: 13px;
+      border: 1px solid #e5c8d1;
+      border-radius: 10px;
       font-size: 16px;
     }
 
-    .main-btn {
+    button,
+    .btn {
       width: 100%;
       border: 0;
-      margin-top: 22px;
-      padding: 15px;
-      border-radius: 12px;
-      background: #4f6657;
+      background: var(--pink);
       color: white;
-      font-size: 17px;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 16px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: block;
     }
 
-    .main-btn:disabled {
-      opacity: 0.6;
+    button.secondary {
+      background: transparent;
+      color: var(--pink-dark);
+      border: 1px solid #dcb4c1;
     }
 
-    .secondary-btn {
-      width: 100%;
-      border: 0;
+    button.danger {
+      background: transparent;
+      border: 1px solid #e5b8c0;
+      color: var(--red);
       margin-top: 12px;
-      padding: 15px;
-      border-radius: 12px;
-      background: #777;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .55;
     }
 
     .message {
-      margin-top: 18px;
+      display: none;
+      margin-top: 16px;
       padding: 12px;
       border-radius: 10px;
-      display: none;
-      line-height: 1.4;
+      font-size: 14px;
     }
 
     .success {
       display: block;
-      background: #e7f5eb;
-      color: #245c35;
+      background: var(--green-bg);
+      color: var(--green);
     }
 
     .error {
       display: block;
-      background: #fdeaea;
-      color: #8b2525;
-    }
-
-    .account {
-      text-align: center;
-    }
-
-    .account h2 {
-      margin-top: 10px;
+      background: var(--red-bg);
+      color: var(--red);
     }
 
     .hidden {
       display: none;
     }
 
-    .home {
-      display: block;
+    .email {
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .booking {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
+      background: #fffafb;
+    }
+
+    .booking-date {
+      font-weight: bold;
+      color: #86566a;
+    }
+
+    .booking-meta {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .pending {
+      background: #fdf3f6;
+      border: 1px solid #e8cad3;
+    }
+
+    .home-link {
       text-align: center;
-      margin-top: 20px;
-      color: #4f6657;
+      display: block;
+      margin: 18px 0 30px;
+      color: #9f6276;
       text-decoration: none;
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <div class="card">
+<div class="container">
 
-    <div id="authScreen">
+  <div class="brand">
 
-      <h1>Heidi Monsen Pilates</h1>
-      <p class="subtitle">Your Pilates account</p>
+    <div class="brand-name">
+      HEIDI MONSEN
+    </div>
 
-      <div class="tabs">
+    <div class="brand-sub">
+      P I L A T E S
+    </div>
 
-        <button
-          id="loginTab"
-          class="tab active"
-          onclick="showLogin()"
-        >
-          Log in
-        </button>
-
-        <button
-          id="signupTab"
-          class="tab"
-          onclick="showSignup()"
-        >
-          Create account
-        </button>
-
-      </div>
+  </div>
 
 
-      <div id="loginForm">
+  <!-- LOGIN / SIGNUP -->
 
-        <label>Email</label>
+  <div
+    id="authScreen"
+    class="card"
+  >
 
-        <input
-          id="loginEmail"
-          type="email"
-          autocomplete="email"
-          placeholder="you@example.com"
-        >
-
-
-        <label>Password</label>
-
-        <input
-          id="loginPassword"
-          type="password"
-          autocomplete="current-password"
-          placeholder="Your password"
-        >
+    <h1>
+      My Account
+    </h1>
 
 
-        <button
-          id="loginButton"
-          class="main-btn"
-          onclick="login()"
-        >
-          Log in
-        </button>
+    <div class="tabs">
 
-      </div>
+      <button
+        id="loginTab"
+        class="tab active"
+        onclick="showLogin()"
+      >
+        Log in
+      </button>
 
-
-      <div id="signupForm" class="hidden">
-
-        <label>Full name</label>
-
-        <input
-          id="signupName"
-          type="text"
-          autocomplete="name"
-          placeholder="Your name"
-        >
-
-
-        <label>Email</label>
-
-        <input
-          id="signupEmail"
-          type="email"
-          autocomplete="email"
-          placeholder="you@example.com"
-        >
-
-
-        <label>Password</label>
-
-        <input
-          id="signupPassword"
-          type="password"
-          autocomplete="new-password"
-          placeholder="Create a password"
-        >
-
-
-        <button
-          id="signupButton"
-          class="main-btn"
-          onclick="signup()"
-        >
-          Create account
-        </button>
-
-      </div>
-
-
-      <div id="message" class="message"></div>
-
-
-      <a class="home" href="./index.html">
-        ← Back to Heidi Monsen Pilates
-      </a>
+      <button
+        id="signupTab"
+        class="tab"
+        onclick="showSignup()"
+      >
+        Create account
+      </button>
 
     </div>
 
 
+    <div id="loginForm">
 
-    <div id="accountScreen" class="account hidden">
+      <label>
+        Email
+      </label>
 
-      <h1>Heidi Monsen Pilates</h1>
+      <input
+        id="loginEmail"
+        type="email"
+        autocomplete="email"
+      >
 
-      <h2>Welcome 👋</h2>
 
-      <p>You are logged in as</p>
+      <label>
+        Password
+      </label>
 
-      <strong id="userEmail"></strong>
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password"
+      >
+
 
       <button
-        class="main-btn"
-        onclick="goToApp()"
+        id="loginButton"
+        onclick="login()"
       >
-        Continue to classes
+        Log in
+      </button>
+
+    </div>
+
+
+    <div
+      id="signupForm"
+      class="hidden"
+    >
+
+      <label>
+        Full name
+      </label>
+
+      <input
+        id="signupName"
+        type="text"
+        autocomplete="name"
+      >
+
+
+      <label>
+        Email
+      </label>
+
+      <input
+        id="signupEmail"
+        type="email"
+        autocomplete="email"
+      >
+
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="signupPassword"
+        type="password"
+        autocomplete="new-password"
+      >
+
+
+      <button
+        id="signupButton"
+        onclick="signup()"
+      >
+        Create account
+      </button>
+
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+  </div>
+
+
+  <!-- ACCOUNT -->
+
+  <div
+    id="accountScreen"
+    class="hidden"
+  >
+
+    <div class="card">
+
+      <h2>
+        My Account
+      </h2>
+
+      <p>
+        Logged in as
+      </p>
+
+      <p
+        id="accountEmail"
+        class="email"
+      ></p>
+
+    </div>
+
+
+    <!-- PENDING BOOKING -->
+
+    <div
+      id="pendingCard"
+      class="card pending hidden"
+    >
+
+      <h2>
+        Finish your booking
+      </h2>
+
+      <div id="pendingDetails">
+        Loading class...
+      </div>
+
+      <button
+        id="confirmBookingButton"
+        onclick="confirmPendingBooking()"
+      >
+        Confirm booking
       </button>
 
       <button
-        class="secondary-btn"
+        class="secondary"
+        onclick="clearPendingBooking()"
+      >
+        Not now
+      </button>
+
+    </div>
+
+
+    <!-- BOOKINGS -->
+
+    <div class="card">
+
+      <h2>
+        My Bookings
+      </h2>
+
+      <div id="bookingList">
+        Loading bookings...
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <button
+        class="secondary"
+        onclick="goToClasses()"
+      >
+        Browse classes
+      </button>
+
+      <button
+        class="danger"
         onclick="logout()"
       >
         Log out
@@ -300,147 +481,231 @@
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="./supabase-config.js"></script>
+  <a
+    class="home-link"
+    href="./index.html"
+  >
+    ← Back to Heidi Monsen Pilates
+  </a>
 
-  <script>
-
-    const message =
-      document.getElementById("message");
+</div>
 
 
-    function showMessage(text, type) {
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="./supabase-config.js"></script>
 
-      message.textContent = text;
-      message.className = "message " + type;
+
+<script>
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  let pendingSessionId =
+    null;
+
+
+  function showMessage(
+    text,
+    type
+  ) {
+
+    message.textContent =
+      text;
+
+
+    message.className =
+      "message " +
+      type;
+
+  }
+
+
+  function clearMessage() {
+
+    message.textContent =
+      "";
+
+
+    message.className =
+      "message";
+
+  }
+
+
+  function showLogin() {
+
+    clearMessage();
+
+
+    document
+      .getElementById(
+        "loginForm"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "signupForm"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "loginTab"
+      )
+      .classList
+      .add("active");
+
+
+    document
+      .getElementById(
+        "signupTab"
+      )
+      .classList
+      .remove("active");
+
+  }
+
+
+  function showSignup() {
+
+    clearMessage();
+
+
+    document
+      .getElementById(
+        "signupForm"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "loginForm"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "signupTab"
+      )
+      .classList
+      .add("active");
+
+
+    document
+      .getElementById(
+        "loginTab"
+      )
+      .classList
+      .remove("active");
+
+  }
+
+
+  async function signup() {
+
+    clearMessage();
+
+
+    const name =
+      document
+        .getElementById(
+          "signupName"
+        )
+        .value
+        .trim();
+
+
+    const email =
+      document
+        .getElementById(
+          "signupEmail"
+        )
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById(
+          "signupPassword"
+        )
+        .value;
+
+
+    if (
+      !name ||
+      !email ||
+      !password
+    ) {
+
+      showMessage(
+        "Please complete all fields.",
+        "error"
+      );
+
+      return;
 
     }
 
 
-    function clearMessage() {
+    if (
+      password.length < 8
+    ) {
 
-      message.textContent = "";
-      message.className = "message";
+      showMessage(
+        "Use a password with at least 8 characters.",
+        "error"
+      );
 
-    }
-
-
-    function showLogin() {
-
-      clearMessage();
-
-      document
-        .getElementById("loginForm")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("signupForm")
-        .classList.add("hidden");
-
-      document
-        .getElementById("loginTab")
-        .classList.add("active");
-
-      document
-        .getElementById("signupTab")
-        .classList.remove("active");
+      return;
 
     }
 
 
-    function showSignup() {
-
-      clearMessage();
-
-      document
-        .getElementById("signupForm")
-        .classList.remove("hidden");
-
-      document
-        .getElementById("loginForm")
-        .classList.add("hidden");
-
-      document
-        .getElementById("signupTab")
-        .classList.add("active");
-
-      document
-        .getElementById("loginTab")
-        .classList.remove("active");
-
-    }
+    const button =
+      document.getElementById(
+        "signupButton"
+      );
 
 
-    async function signup() {
-
-      clearMessage();
-
-
-      const name =
-        document
-          .getElementById("signupName")
-          .value
-          .trim();
+    button.disabled =
+      true;
 
 
-      const email =
-        document
-          .getElementById("signupEmail")
-          .value
-          .trim();
+    button.textContent =
+      "Creating account...";
 
 
-      const password =
-        document
-          .getElementById("signupPassword")
-          .value;
+    try {
 
+      const { data, error } =
+        await supabaseClient
+          .auth
+          .signUp({
 
-      if (!name || !email || !password) {
+            email:
+              email,
 
-        showMessage(
-          "Please complete all fields.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      if (password.length < 8) {
-
-        showMessage(
-          "Please use a password with at least 8 characters.",
-          "error"
-        );
-
-        return;
-
-      }
-
-
-      const button =
-        document.getElementById("signupButton");
-
-
-      button.disabled = true;
-      button.textContent = "Creating account...";
-
-
-      try {
-
-        const { data, error } =
-          await supabaseClient.auth.signUp({
-
-            email: email,
-
-            password: password,
+            password:
+              password,
 
             options: {
 
               data: {
-                full_name: name
+                full_name:
+                  name
               }
 
             }
@@ -448,78 +713,18 @@
           });
 
 
-        if (error) {
-
-          showMessage(
-            error.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        if (data.session) {
-
-          showAccount(data.user);
-
-          return;
-
-        }
-
-
-        showMessage(
-          "Account created. Check your email and tap the confirmation link before logging in.",
-          "success"
-        );
-
+      if (error) {
+        throw error;
       }
 
-      catch (error) {
 
-        showMessage(
-          "Something went wrong. Please try again.",
-          "error"
-        );
+      if (
+        data &&
+        data.session
+      ) {
 
-        console.error(error);
-
-      }
-
-      finally {
-
-        button.disabled = false;
-        button.textContent = "Create account";
-
-      }
-
-    }
-
-
-    async function login() {
-
-      clearMessage();
-
-
-      const email =
-        document
-          .getElementById("loginEmail")
-          .value
-          .trim();
-
-
-      const password =
-        document
-          .getElementById("loginPassword")
-          .value;
-
-
-      if (!email || !password) {
-
-        showMessage(
-          "Enter your email and password.",
-          "error"
+        showAccount(
+          data.user
         );
 
         return;
@@ -527,139 +732,796 @@
       }
 
 
-      const button =
-        document.getElementById("loginButton");
+      showMessage(
+        "Account created. Check your email and confirm your address, then return here and log in.",
+        "success"
+      );
+
+    }
+
+    catch (error) {
+
+      showMessage(
+        error.message ||
+        "Account could not be created.",
+        "error"
+      );
+
+    }
+
+    finally {
+
+      button.disabled =
+        false;
 
 
-      button.disabled = true;
-      button.textContent = "Logging in...";
+      button.textContent =
+        "Create account";
+
+    }
+
+  }
 
 
-      try {
+  async function login() {
 
-        const { data, error } =
-          await supabaseClient.auth.signInWithPassword({
+    clearMessage();
 
-            email: email,
 
-            password: password
+    const email =
+      document
+        .getElementById(
+          "loginEmail"
+        )
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById(
+          "loginPassword"
+        )
+        .value;
+
+
+    if (
+      !email ||
+      !password
+    ) {
+
+      showMessage(
+        "Enter your email and password.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById(
+        "loginButton"
+      );
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Logging in...";
+
+
+    try {
+
+      const { data, error } =
+        await supabaseClient
+          .auth
+          .signInWithPassword({
+
+            email:
+              email,
+
+            password:
+              password
 
           });
 
 
-        if (error) {
-
-          showMessage(
-            error.message,
-            "error"
-          );
-
-          return;
-
-        }
-
-
-        showAccount(data.user);
-
+      if (error) {
+        throw error;
       }
 
-      catch (error) {
 
-        showMessage(
-          "Something went wrong. Please try again.",
-          "error"
+      await showAccount(
+        data.user
+      );
+
+    }
+
+    catch (error) {
+
+      showMessage(
+        error.message ||
+        "Login failed.",
+        "error"
+      );
+
+    }
+
+    finally {
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "Log in";
+
+    }
+
+  }
+
+
+  async function showAccount(
+    user
+  ) {
+
+    document
+      .getElementById(
+        "authScreen"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "accountScreen"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "accountEmail"
+      )
+      .textContent =
+        user.email;
+
+
+    await loadPendingBooking();
+
+    await loadBookings();
+
+  }
+
+
+  async function loadPendingBooking() {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const urlSession =
+      params.get("session");
+
+
+    const storedSession =
+      localStorage.getItem(
+        "pendingPilatesSession"
+      );
+
+
+    pendingSessionId =
+      urlSession ||
+      storedSession;
+
+
+    if (
+      !pendingSessionId
+    ) {
+
+      document
+        .getElementById(
+          "pendingCard"
+        )
+        .classList
+        .add("hidden");
+
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "pendingPilatesSession",
+      pendingSessionId
+    );
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("class_sessions")
+        .select("*")
+        .eq(
+          "id",
+          pendingSessionId
+        )
+        .single();
+
+
+    if (
+      error ||
+      !data
+    ) {
+
+      clearPendingBooking();
+
+      return;
+
+    }
+
+
+    const date =
+      new Date(
+        data.class_date +
+        "T12:00:00"
+      );
+
+
+    const formattedDate =
+      date.toLocaleDateString(
+        "en-GB",
+        {
+          weekday:
+            "long",
+
+          day:
+            "numeric",
+
+          month:
+            "long"
+        }
+      );
+
+
+    document
+      .getElementById(
+        "pendingDetails"
+      )
+      .innerHTML =
+        `
+          <strong>
+            ${escapeHtml(
+              data.level ||
+              data.class_name ||
+              "Mat Pilates"
+            )}
+          </strong>
+
+          <p>
+            ${escapeHtml(
+              formattedDate
+            )}
+            at
+            ${escapeHtml(
+              data.start_time
+                .substring(0,5)
+            )}
+          </p>
+
+          <p>
+            ${escapeHtml(
+              data.venue || ""
+            )}
+          </p>
+        `;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .remove("hidden");
+
+  }
+
+
+  async function confirmPendingBooking() {
+
+    if (
+      !pendingSessionId
+    ) {
+      return;
+    }
+
+
+    const button =
+      document.getElementById(
+        "confirmBookingButton"
+      );
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Booking...";
+
+
+    const { error } =
+      await supabaseClient.rpc(
+        "book_class",
+        {
+          p_session_id:
+            pendingSessionId
+        }
+      );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "Confirm booking";
+
+
+    if (error) {
+
+      alert(
+        error.message
+      );
+
+      return;
+
+    }
+
+
+    localStorage.removeItem(
+      "pendingPilatesSession"
+    );
+
+
+    pendingSessionId =
+      null;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .add("hidden");
+
+
+    window.history.replaceState(
+      {},
+      "",
+      "./login.html"
+    );
+
+
+    alert(
+      "Booking confirmed."
+    );
+
+
+    await loadBookings();
+
+  }
+
+
+  function clearPendingBooking() {
+
+    localStorage.removeItem(
+      "pendingPilatesSession"
+    );
+
+
+    pendingSessionId =
+      null;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .add("hidden");
+
+
+    window.history.replaceState(
+      {},
+      "",
+      "./login.html"
+    );
+
+  }
+
+
+  async function loadBookings() {
+
+    const list =
+      document.getElementById(
+        "bookingList"
+      );
+
+
+    list.innerHTML =
+      "Loading bookings...";
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("class_bookings")
+        .select(`
+          id,
+          session_id,
+          status,
+          booked_at,
+          class_sessions (
+            id,
+            class_name,
+            class_date,
+            start_time,
+            duration_minutes,
+            level,
+            venue
+          )
+        `)
+        .eq(
+          "status",
+          "booked"
         );
 
-        console.error(error);
+
+    if (error) {
+
+      console.error(error);
+
+
+      list.innerHTML =
+        "Your bookings could not be loaded.";
+
+
+      return;
+
+    }
+
+
+    const bookings =
+      (data || [])
+        .filter(
+          function(booking) {
+
+            return booking.class_sessions;
+
+          }
+        )
+        .sort(
+          function(a, b) {
+
+            const aTime =
+              a.class_sessions.class_date +
+              "T" +
+              a.class_sessions.start_time;
+
+
+            const bTime =
+              b.class_sessions.class_date +
+              "T" +
+              b.class_sessions.start_time;
+
+
+            return aTime.localeCompare(
+              bTime
+            );
+
+          }
+        );
+
+
+    list.innerHTML = "";
+
+
+    if (
+      bookings.length === 0
+    ) {
+
+      list.innerHTML =
+        `
+          <p>
+            You don't have any upcoming bookings yet.
+          </p>
+        `;
+
+
+      return;
+
+    }
+
+
+    bookings.forEach(
+      function(booking) {
+
+        const session =
+          booking.class_sessions;
+
+
+        const date =
+          new Date(
+            session.class_date +
+            "T12:00:00"
+          );
+
+
+        const formattedDate =
+          date.toLocaleDateString(
+            "en-GB",
+            {
+              weekday:
+                "long",
+
+              day:
+                "numeric",
+
+              month:
+                "long"
+            }
+          );
+
+
+        const box =
+          document.createElement(
+            "div"
+          );
+
+
+        box.className =
+          "booking";
+
+
+        box.innerHTML =
+          `
+            <div class="booking-date">
+              ${escapeHtml(
+                formattedDate
+              )}
+            </div>
+
+            <h3>
+              ${escapeHtml(
+                session.level ||
+                session.class_name ||
+                "Mat Pilates"
+              )}
+            </h3>
+
+            <div class="booking-meta">
+              ${escapeHtml(
+                session.start_time.substring(
+                  0,
+                  5
+                )
+              )}
+              ·
+              ${escapeHtml(
+                String(
+                  session.duration_minutes ||
+                  55
+                )
+              )}
+              minutes
+
+              <br>
+
+              ${escapeHtml(
+                session.venue || ""
+              )}
+            </div>
+          `;
+
+
+        const cancel =
+          document.createElement(
+            "button"
+          );
+
+
+        cancel.className =
+          "danger";
+
+
+        cancel.textContent =
+          "Cancel booking";
+
+
+        cancel.onclick =
+          function() {
+
+            cancelBooking(
+              booking.session_id
+            );
+
+          };
+
+
+        box.appendChild(
+          cancel
+        );
+
+
+        list.appendChild(
+          box
+        );
 
       }
+    );
 
-      finally {
+  }
 
-        button.disabled = false;
-        button.textContent = "Log in";
 
-      }
+  async function cancelBooking(
+    sessionId
+  ) {
+
+    const confirmed =
+      window.confirm(
+        "Are you sure you want to cancel this booking?"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    const { error } =
+      await supabaseClient.rpc(
+        "cancel_class_booking",
+        {
+          p_session_id:
+            sessionId
+        }
+      );
+
+
+    if (error) {
+
+      alert(
+        error.message
+      );
+
+      return;
 
     }
 
 
-    async function logout() {
-
-      await supabaseClient.auth.signOut();
-
-
-      document
-        .getElementById("accountScreen")
-        .classList.add("hidden");
+    alert(
+      "Booking cancelled."
+    );
 
 
-      document
-        .getElementById("authScreen")
-        .classList.remove("hidden");
+    await loadBookings();
+
+  }
 
 
-      showLogin();
+  async function logout() {
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+
+    document
+      .getElementById(
+        "accountScreen"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "authScreen"
+      )
+      .classList
+      .remove("hidden");
+
+
+    showLogin();
+
+  }
+
+
+  function goToClasses() {
+
+    window.location.href =
+      "./index.html?classes=1";
+
+  }
+
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(
+      value ?? ""
+    )
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
+
+  }
+
+
+  async function checkSession() {
+
+    const { data } =
+      await supabaseClient
+        .auth
+        .getSession();
+
+
+    if (
+      data &&
+      data.session
+    ) {
+
+      await showAccount(
+        data.session.user
+      );
 
     }
 
-
-    function showAccount(user) {
-
-      document
-        .getElementById("authScreen")
-        .classList.add("hidden");
+  }
 
 
-      document
-        .getElementById("accountScreen")
-        .classList.remove("hidden");
+  supabaseClient
+    .auth
+    .onAuthStateChange(
+      async function(
+        event,
+        session
+      ) {
 
+        if (
+          session &&
+          session.user
+        ) {
 
-      document
-        .getElementById("userEmail")
-        .textContent = user.email;
-
-    }
-
-
-    function goToApp() {
-
-      window.location.href = "./index.html";
-
-    }
-
-
-    async function checkSession() {
-
-      const { data, error } =
-        await supabaseClient.auth.getSession();
-
-
-      if (error) {
-
-        console.error(error);
-
-        return;
-
-      }
-
-
-      if (data.session) {
-
-        showAccount(data.session.user);
-
-      }
-
-    }
-
-
-    supabaseClient.auth.onAuthStateChange(
-      (event, session) => {
-
-        if (session) {
-
-          showAccount(session.user);
+          await showAccount(
+            session.user
+          );
 
         }
 
@@ -667,9 +1529,10 @@
     );
 
 
-    checkSession();
+  checkSession();
 
-  </script>
+</script>
 
 </body>
+
 </html>
