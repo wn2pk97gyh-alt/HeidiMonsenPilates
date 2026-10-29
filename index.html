@@ -3,31 +3,15 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dfe6">
+  <meta name="description" content="Heidi Monsen Pilates">
 
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  >
-
-  <meta
-    name="theme-color"
-    content="#f6dfe6"
-  >
-
-  <meta
-    name="description"
-    content="Heidi Monsen Pilates"
-  >
-
-  <link
-    rel="manifest"
-    href="./manifest.webmanifest"
-  >
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <title>Heidi Monsen Pilates</title>
 
   <style>
-
     :root {
       --bg: #f8eef1;
       --panel: #fffafb;
@@ -38,7 +22,9 @@
       --muted: #8b727a;
       --line: #ecd7dd;
       --white: #ffffff;
-      --green: #52835d;
+      --green-bg: #e9f4eb;
+      --green: #4f7c59;
+      --red-bg: #f9e6e9;
       --red: #a64d5c;
 
       font-family: Arial, sans-serif;
@@ -55,9 +41,13 @@
       color: var(--text);
     }
 
+    body {
+      min-height: 100vh;
+    }
+
     main {
       max-width: 640px;
-      margin: auto;
+      margin: 0 auto;
       background: var(--panel);
       min-height: 100vh;
       padding-bottom: 95px;
@@ -111,7 +101,7 @@
 
     h3 {
       font-size: 22px;
-      margin: 6px 0;
+      margin: 8px 0;
     }
 
     p {
@@ -173,9 +163,9 @@
       font-size: 13px;
     }
 
-    .availability {
+    .status {
       display: inline-block;
-      padding: 6px 10px;
+      padding: 7px 11px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: bold;
@@ -183,12 +173,12 @@
     }
 
     .available {
-      background: #e9f4eb;
+      background: var(--green-bg);
       color: var(--green);
     }
 
     .full {
-      background: #f9e6e9;
+      background: var(--red-bg);
       color: var(--red);
     }
 
@@ -212,7 +202,7 @@
     }
 
     button:disabled {
-      opacity: 0.5;
+      opacity: 0.55;
       cursor: not-allowed;
     }
 
@@ -249,8 +239,15 @@
     }
 
     .class-date {
-      font-weight: bold;
       color: #8b596b;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .class-time {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
 
     nav {
@@ -278,34 +275,20 @@
       text-decoration: none;
       border-radius: 0;
     }
-
   </style>
-
 </head>
-
 
 <body>
 
 <main>
 
   <header>
-
     <div>
-
-      <div class="brand">
-        HEIDI MONSEN
-      </div>
-
-      <div class="sub">
-        P I L A T E S
-      </div>
-
+      <div class="brand">HEIDI MONSEN</div>
+      <div class="sub">P I L A T E S</div>
     </div>
 
-    <span style="font-size:26px;color:#bf7f95;">
-      ✿
-    </span>
-
+    <span style="font-size:26px;color:#bf7f95;">✿</span>
   </header>
 
 
@@ -322,9 +305,7 @@
 
       <div class="hero-content">
 
-        <div class="tag">
-          Pilates in Guildford
-        </div>
+        <div class="tag">Pilates in Guildford</div>
 
         <h1>
           Move better.<br>
@@ -333,8 +314,8 @@
         </h1>
 
         <p>
-          Friendly mat Pilates classes in Shalford
-          and Blackheath, plus private reformer sessions.
+          Friendly mat Pilates classes in Shalford and Blackheath,
+          plus private reformer sessions.
         </p>
 
         <button onclick="showPage('classes')">
@@ -356,16 +337,12 @@
 
       <div class="card-content">
 
-        <div class="tag">
-          Mat Pilates
-        </div>
+        <div class="tag">Mat Pilates</div>
 
-        <h2>
-          Live class timetable
-        </h2>
+        <h2>Live class timetable</h2>
 
         <p>
-          See upcoming classes and current availability.
+          See upcoming classes and whether each class is available or full.
         </p>
 
         <button
@@ -390,13 +367,9 @@
 
       <div class="card-content">
 
-        <div class="tag">
-          Private Pilates
-        </div>
+        <div class="tag">Private Pilates</div>
 
-        <h2>
-          Reformer
-        </h2>
+        <h2>Reformer</h2>
 
         <p>
           Private reformer sessions are arranged directly with Heidi.
@@ -418,13 +391,9 @@
 
       <div class="card-content">
 
-        <div class="tag">
-          Customer account
-        </div>
+        <div class="tag">Customer account</div>
 
-        <h2>
-          My Account
-        </h2>
+        <h2>My Account</h2>
 
         <p>
           Log in or create your Heidi Monsen Pilates account.
@@ -451,18 +420,12 @@
     class="hidden"
   >
 
-    <div class="tag">
-      Live timetable
-    </div>
+    <div class="tag">Live timetable</div>
 
-    <h2>
-      Upcoming Classes
-    </h2>
-
+    <h2>Upcoming Classes</h2>
 
     <div class="notice">
-      This timetable is loaded live from Heidi Monsen Pilates.
-      Availability refreshes automatically.
+      Timetable and availability are loaded live from the booking database.
     </div>
 
 
@@ -474,31 +437,12 @@
       id="dayFilter"
       onchange="renderClasses()"
     >
-
-      <option value="all">
-        All days
-      </option>
-
-      <option value="Monday">
-        Monday
-      </option>
-
-      <option value="Tuesday">
-        Tuesday
-      </option>
-
-      <option value="Wednesday">
-        Wednesday
-      </option>
-
-      <option value="Thursday">
-        Thursday
-      </option>
-
-      <option value="Friday">
-        Friday
-      </option>
-
+      <option value="all">All days</option>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
     </select>
 
 
@@ -519,13 +463,9 @@
     class="hidden"
   >
 
-    <div class="tag">
-      Private Pilates
-    </div>
+    <div class="tag">Private Pilates</div>
 
-    <h2>
-      Reformer Session Enquiry
-    </h2>
+    <h2>Reformer Session Enquiry</h2>
 
 
     <div class="card">
@@ -546,57 +486,27 @@
 
         <form id="reformerForm">
 
-          <label>
-            Full name
-          </label>
-
-          <input
-            id="rName"
-            required
-          >
+          <label>Full name</label>
+          <input id="rName" required>
 
 
-          <label>
-            Email
-          </label>
-
-          <input
-            id="rEmail"
-            type="email"
-            required
-          >
+          <label>Email</label>
+          <input id="rEmail" type="email" required>
 
 
-          <label>
-            Phone number
-          </label>
-
-          <input
-            id="rPhone"
-            type="tel"
-          >
+          <label>Phone number</label>
+          <input id="rPhone" type="tel">
 
 
-          <label>
-            Session
-          </label>
+          <label>Session</label>
 
           <select id="rType">
-
-            <option>
-              One-to-one
-            </option>
-
-            <option>
-              Two people
-            </option>
-
+            <option>One-to-one</option>
+            <option>Two people</option>
           </select>
 
 
-          <label>
-            Message
-          </label>
+          <label>Message</label>
 
           <textarea
             id="rMessage"
@@ -627,13 +537,9 @@
     class="hidden"
   >
 
-    <div class="tag">
-      Contact
-    </div>
+    <div class="tag">Contact</div>
 
-    <h2>
-      Contact Heidi
-    </h2>
+    <h2>Contact Heidi</h2>
 
 
     <div class="card">
@@ -660,7 +566,7 @@
   </section>
 
 
-  <!-- NAV -->
+  <!-- NAVIGATION -->
 
   <nav>
 
@@ -669,24 +575,20 @@
       Home
     </button>
 
-
     <button onclick="showPage('classes')">
       ▦<br>
       Classes
     </button>
-
 
     <button onclick="showPage('reformer')">
       ♡<br>
       Reformer
     </button>
 
-
     <button onclick="showPage('contact')">
       ✉<br>
       Contact
     </button>
-
 
     <a href="./login.html">
       ◯<br>
@@ -699,7 +601,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-
 <script src="./supabase-config.js"></script>
 
 
@@ -713,9 +614,7 @@
     document
       .querySelectorAll("main > section")
       .forEach(function(section) {
-
         section.classList.add("hidden");
-
       });
 
 
@@ -724,16 +623,12 @@
 
 
     if (page) {
-
       page.classList.remove("hidden");
-
     }
 
 
     if (pageId === "classes") {
-
       loadClasses();
-
     }
 
 
@@ -742,13 +637,10 @@
   }
 
 
-
   function formatDate(dateString) {
 
     const date =
-      new Date(
-        dateString + "T12:00:00"
-      );
+      new Date(dateString + "T12:00:00");
 
 
     return date.toLocaleDateString(
@@ -763,27 +655,21 @@
   }
 
 
-
   function formatTime(timeString) {
 
     if (!timeString) {
       return "";
     }
 
-
-    return timeString
-      .substring(0, 5);
+    return timeString.substring(0, 5);
 
   }
-
 
 
   async function loadClasses() {
 
     const list =
-      document.getElementById(
-        "classList"
-      );
+      document.getElementById("classList");
 
 
     try {
@@ -796,40 +682,22 @@
 
       const { data, error } =
         await supabaseClient
-
           .from("class_sessions")
-
           .select("*")
-
-          .gte(
-            "class_date",
-            today
-          )
-
-          .eq(
-            "status",
-            "active"
-          )
-
+          .gte("class_date", today)
+          .eq("status", "active")
           .order(
             "class_date",
-            {
-              ascending: true
-            }
+            { ascending: true }
           )
-
           .order(
             "start_time",
-            {
-              ascending: true
-            }
+            { ascending: true }
           );
 
 
       if (error) {
-
         throw error;
-
       }
 
 
@@ -845,7 +713,6 @@
 
       console.error(error);
 
-
       list.innerHTML =
         `
           <div class="notice">
@@ -859,26 +726,20 @@
   }
 
 
-
   function renderClasses() {
 
     const list =
-      document.getElementById(
-        "classList"
-      );
+      document.getElementById("classList");
 
 
     const filter =
-      document.getElementById(
-        "dayFilter"
-      ).value;
+      document.getElementById("dayFilter").value;
 
 
     list.innerHTML = "";
 
 
-    let shown =
-      0;
+    let shown = 0;
 
 
     liveClasses.forEach(
@@ -904,9 +765,7 @@
           filter !== "all" &&
           filter !== day
         ) {
-
           return;
-
         }
 
 
@@ -925,22 +784,13 @@
           );
 
 
-        const spaces =
-          Math.max(
-            capacity - booked,
-            0
-          );
-
-
-        const full =
+        const isFull =
           capacity > 0 &&
-          spaces <= 0;
+          booked >= capacity;
 
 
         const card =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
 
         card.className =
@@ -948,9 +798,7 @@
 
 
         const content =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
 
         content.className =
@@ -958,9 +806,7 @@
 
 
         const dateLabel =
-          document.createElement(
-            "div"
-          );
+          document.createElement("div");
 
 
         dateLabel.className =
@@ -970,155 +816,140 @@
         dateLabel.textContent =
           formatDate(
             session.class_date
-          ) +
-          " · " +
+          );
+
+
+        const timeLabel =
+          document.createElement("div");
+
+
+        timeLabel.className =
+          "class-time";
+
+
+        timeLabel.textContent =
           formatTime(
             session.start_time
-          );
+          ) +
+          " · " +
+          (
+            session.duration_minutes ||
+            55
+          ) +
+          " minutes";
 
 
         const title =
-          document.createElement(
-            "h3"
-          );
+          document.createElement("h3");
 
 
         title.textContent =
-          session.class_name ||
           session.level ||
+          session.class_name ||
           "Mat Pilates";
 
 
-        const level =
-          document.createElement(
-            "p"
-          );
-
-
-        level.textContent =
-          session.level || "";
-
-
         const venue =
-          document.createElement(
-            "p"
-          );
+          document.createElement("p");
 
 
         venue.textContent =
           session.venue || "";
 
 
-        const availability =
-          document.createElement(
-            "div"
-          );
+        const price =
+          document.createElement("p");
 
 
-        availability.className =
-          "availability " +
+        const pounds =
+          Number(
+            session.price_pence || 0
+          ) / 100;
+
+
+        price.textContent =
+          pounds > 0
+            ? "Drop-in: £" +
+              pounds.toFixed(2)
+            : "";
+
+
+        const status =
+          document.createElement("div");
+
+
+        status.className =
+          "status " +
           (
-            full
+            isFull
               ? "full"
               : "available"
           );
 
 
-        if (full) {
-
-          availability.textContent =
-            "FULL";
-
-        }
-
-        else if (capacity > 0) {
-
-          availability.textContent =
-            spaces +
-            (
-              spaces === 1
-                ? " space left"
-                : " spaces left"
-            );
-
-        }
-
-        else {
-
-          availability.textContent =
-            "Available";
-
-        }
+        status.textContent =
+          isFull
+            ? "FULL"
+            : "Available";
 
 
         const button =
-          document.createElement(
-            "button"
-          );
+          document.createElement("button");
 
 
         button.textContent =
-          full
+          isFull
             ? "Class full"
             : "Book this class";
 
 
         button.disabled =
-          full;
+          isFull;
 
 
         button.onclick =
           function() {
 
-            if (full) {
+            if (isFull) {
               return;
             }
 
 
             window.location.href =
-              "./login.html";
+              "./login.html?session=" +
+              encodeURIComponent(
+                session.id
+              );
 
           };
 
 
         content.append(
           dateLabel,
+          timeLabel,
           title
         );
 
 
-        if (session.level) {
-
-          content.appendChild(
-            level
-          );
-
+        if (session.venue) {
+          content.appendChild(venue);
         }
 
 
-        if (session.venue) {
-
-          content.appendChild(
-            venue
-          );
-
+        if (pounds > 0) {
+          content.appendChild(price);
         }
 
 
         content.append(
-          availability,
+          status,
           button
         );
 
 
-        card.appendChild(
-          content
-        );
+        card.appendChild(content);
 
-
-        list.appendChild(
-          card
-        );
+        list.appendChild(card);
 
       }
     );
@@ -1138,11 +969,8 @@
   }
 
 
-
   document
-    .getElementById(
-      "reformerForm"
-    )
+    .getElementById("reformerForm")
     .addEventListener(
       "submit",
       function(event) {
@@ -1151,43 +979,23 @@
 
 
         const name =
-          document
-            .getElementById(
-              "rName"
-            )
-            .value;
+          document.getElementById("rName").value;
 
 
         const email =
-          document
-            .getElementById(
-              "rEmail"
-            )
-            .value;
+          document.getElementById("rEmail").value;
 
 
         const phone =
-          document
-            .getElementById(
-              "rPhone"
-            )
-            .value;
+          document.getElementById("rPhone").value;
 
 
         const type =
-          document
-            .getElementById(
-              "rType"
-            )
-            .value;
+          document.getElementById("rType").value;
 
 
         const message =
-          document
-            .getElementById(
-              "rMessage"
-            )
-            .value;
+          document.getElementById("rMessage").value;
 
 
         const subject =
@@ -1198,22 +1006,16 @@
 
         const body =
           encodeURIComponent(
-
             "Name: " +
             name +
-
             "\n\nEmail: " +
             email +
-
             "\n\nPhone: " +
             phone +
-
             "\n\nSession: " +
             type +
-
             "\n\nMessage: " +
             message
-
           );
 
 
@@ -1228,19 +1030,8 @@
     );
 
 
-
-  /*
-    Initial load
-  */
-
   loadClasses();
 
-
-
-  /*
-    Automatically refresh availability
-    every 60 seconds while the app is open.
-  */
 
   setInterval(
     loadClasses,
@@ -1248,14 +1039,7 @@
   );
 
 
-
-  /*
-    Service worker update check
-  */
-
-  if (
-    "serviceWorker" in navigator
-  ) {
+  if ("serviceWorker" in navigator) {
 
     window.addEventListener(
       "load",
@@ -1266,9 +1050,7 @@
           const registration =
             await navigator
               .serviceWorker
-              .register(
-                "./sw.js"
-              );
+              .register("./sw.js");
 
 
           registration.update();
@@ -1277,9 +1059,7 @@
 
         catch (error) {
 
-          console.log(
-            error
-          );
+          console.log(error);
 
         }
 
