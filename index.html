@@ -3,71 +3,74 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6dfe6">
+  <meta name="description" content="Heidi Monsen Pilates">
 
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  >
-
-  <meta
-    name="theme-color"
-    content="#e9ede6"
-  >
-
-  <meta
-    name="description"
-    content="Heidi Monsen Pilates"
-  >
-
-  <link
-    rel="manifest"
-    href="./manifest.webmanifest"
-  >
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <title>Heidi Monsen Pilates</title>
 
   <style>
-
     :root {
+      --bg: #f8eef1;
+      --panel: #fffafb;
+      --pink: #f3d8e0;
+      --pink-2: #e9bcc9;
+      --pink-3: #d797ab;
+      --text: #5c4950;
+      --muted: #8b727a;
+      --line: #ecd7dd;
+      --button: #b6788c;
+      --button-dark: #9f6276;
+      --white: #ffffff;
       font-family: Arial, sans-serif;
-      color: #354538;
-      background: #e9ede6;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
     }
 
     main {
-      max-width: 620px;
-      margin: auto;
-      background: #fbfaf6;
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--panel);
       min-height: 100vh;
-      padding-bottom: 90px;
+      padding-bottom: 95px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
     }
 
     header {
-      padding: 22px 20px;
-      border-bottom: 1px solid #dce3d8;
+      padding: 22px 20px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff8fa 0%, #fdf5f7 100%);
     }
 
     .brand {
       letter-spacing: 3px;
       font-weight: bold;
       font-size: 15px;
+      color: #7d4f60;
     }
 
     .sub {
       font-size: 10px;
-      color: #758675;
       letter-spacing: 3px;
+      color: var(--muted);
       margin-top: 5px;
     }
 
@@ -76,74 +79,120 @@
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       font-family: Georgia, serif;
       font-weight: normal;
+      margin-top: 0;
+      color: #704957;
     }
 
     h1 {
       font-size: 38px;
-      line-height: 1.13;
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
 
     h2 {
-      font-size: 27px;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
     }
 
     p {
       line-height: 1.55;
-      color: #5e6e5e;
-    }
-
-    .hero {
-      background: #e8eee4;
-      border-radius: 14px;
-      padding: 25px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid #e0e5dc;
-      border-radius: 12px;
-      padding: 18px;
-      margin: 12px 0;
+      color: var(--text);
+      margin-top: 0;
     }
 
     .tag {
       font-size: 11px;
-      color: #718471;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.4px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #fef7f9 0%, #f8e7ec 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 235px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-content {
+      padding: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: 0 8px 18px rgba(183, 120, 140, 0.06);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 18px;
     }
 
     .notice {
-      background: #e9eee5;
+      background: #fdf3f6;
+      border: 1px solid var(--line);
       padding: 14px;
-      border-radius: 8px;
+      border-radius: 12px;
       font-size: 13px;
-      color: #516852;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .muted {
+      font-size: 13px;
+      color: var(--muted);
     }
 
     button,
     .btn {
       font: inherit;
       border: 0;
-      background: #657d66;
+      background: var(--button);
       color: white;
-      border-radius: 8px;
-      padding: 12px 16px;
+      border-radius: 10px;
+      padding: 13px 16px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s ease;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
+    button:hover,
+    .btn:hover {
+      background: var(--button-dark);
     }
 
     button.outline {
       background: transparent;
-      color: #526b55;
-      border: 1px solid #9aaa99;
+      color: #9c5d72;
+      border: 1px solid #dcb4c1;
     }
 
     .wide {
@@ -154,18 +203,20 @@
     textarea,
     select {
       width: 100%;
+      padding: 13px;
+      border: 1px solid #e5c8d1;
+      border-radius: 10px;
+      background: #fff;
       font: inherit;
-      padding: 12px;
-      border: 1px solid #cdd8ca;
-      border-radius: 8px;
-      background: white;
+      color: var(--text);
     }
 
     label {
       display: block;
-      margin: 14px 0 6px;
+      margin: 14px 0 7px;
       font-size: 13px;
       font-weight: bold;
+      color: #845867;
     }
 
     nav {
@@ -173,25 +224,33 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      max-width: 620px;
       width: 100%;
-      background: white;
+      max-width: 640px;
+      background: rgba(255, 250, 251, 0.98);
+      backdrop-filter: blur(8px);
       display: flex;
-      border-top: 1px solid #dce3d8;
+      border-top: 1px solid var(--line);
       padding-bottom: env(safe-area-inset-bottom);
     }
 
     nav button,
     nav a {
       flex: 1;
-      background: white;
-      color: #6e806e;
-      font-size: 11px;
+      background: transparent;
+      color: #946572;
+      border: 0;
       border-radius: 0;
-      padding: 14px 2px;
+      padding: 13px 4px;
+      font-size: 11px;
       text-align: center;
       text-decoration: none;
-      border: 0;
+      line-height: 1.25;
+    }
+
+    nav button.active {
+      background: #fdf2f5;
+      color: #744755;
+      font-weight: bold;
     }
 
     .hidden {
@@ -199,36 +258,26 @@
     }
 
     a {
-      color: #476b4e;
+      color: #a35f77;
     }
 
+    .small-gap {
+      height: 8px;
+    }
   </style>
-
 </head>
-
 
 <body>
 
 <main>
 
   <header>
-
     <div>
-
-      <div class="brand">
-        HEIDI MONSEN
-      </div>
-
-      <div class="sub">
-        P I L A T E S
-      </div>
-
+      <div class="brand">HEIDI MONSEN</div>
+      <div class="sub">P I L A T E S</div>
     </div>
 
-    <span style="font-size:25px">
-      ✿
-    </span>
-
+    <span style="font-size:26px;color:#bf7f95;">✿</span>
   </header>
 
 
@@ -237,89 +286,101 @@
   <section id="home">
 
     <div class="hero">
+      <img
+        src="https://static.wixstatic.com/media/0f185f_725e8267b36f406a80130c5cce46a2c7~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screen%20Shot%202018-01-02%20at%2013_59_57.jpg"
+        alt="Pilates class hero image"
+      >
 
-      <div class="tag">
-        Pilates in Guildford
+      <div class="hero-content">
+        <div class="tag">Pilates in Guildford</div>
+
+        <h1>
+          Move better.<br>
+          Feel stronger.<br>
+          Live well.
+        </h1>
+
+        <p>
+          Friendly mat Pilates classes in Shalford and Blackheath,
+          plus private reformer sessions by enquiry.
+        </p>
+
+        <button onclick="showPage('classes')">
+          Explore mat classes →
+        </button>
       </div>
-
-      <h1>
-        Move better.<br>
-        Feel stronger.<br>
-        Live well.
-      </h1>
-
-      <p>
-        Mat Pilates classes in Shalford and Blackheath,
-        with private reformer sessions by enquiry.
-      </p>
-
-      <button onclick="showPage('classes')">
-        Explore mat classes →
-      </button>
-
     </div>
 
 
     <div class="card">
-
-      <h2>
-        Mat Pilates
-      </h2>
-
-      <p>
-        Browse the weekly timetable and enquire about
-        term places or drop-in sessions.
-      </p>
-
-      <button
-        class="outline"
-        onclick="showPage('classes')"
+      <img
+        class="card-image"
+        src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/crop/x_31,y_49,w_2939,h_1951/fill/w_980,h_651,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC06591_JPG.jpg"
+        alt="Mat Pilates class"
       >
-        See timetable
-      </button>
 
+      <div class="card-content">
+        <div class="tag">Mat classes</div>
+        <h2>Mat Pilates</h2>
+        <p>
+          Browse the weekly timetable and enquire about
+          term places or available drop-in sessions.
+        </p>
+
+        <button
+          class="outline"
+          onclick="showPage('classes')"
+        >
+          See timetable
+        </button>
+      </div>
     </div>
 
 
     <div class="card">
-
-      <h2>
-        Private Reformer Pilates
-      </h2>
-
-      <p>
-        Tailored private sessions arranged directly
-        with Heidi.
-      </p>
-
-      <button
-        class="outline"
-        onclick="showPage('reformer')"
+      <img
+        class="card-image"
+        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC04433_JPG.jpg"
+        alt="Private reformer Pilates studio"
       >
-        Make an enquiry
-      </button>
 
+      <div class="card-content">
+        <div class="tag">Private Pilates</div>
+        <h2>Private Reformer Pilates</h2>
+        <p>
+          Tailored reformer sessions in Heidi’s private studio.
+          These stay as an enquiry, not a direct booking.
+        </p>
+
+        <button
+          class="outline"
+          onclick="showPage('reformer')"
+        >
+          Make an enquiry
+        </button>
+      </div>
     </div>
 
 
     <div class="card">
-
-      <h2>
-        Your Account
-      </h2>
-
-      <p>
-        Create an account or log in to your
-        Heidi Monsen Pilates account.
-      </p>
-
-      <a
-        class="btn"
-        href="./login.html"
+      <img
+        class="card-image"
+        src="https://static.wixstatic.com/media/0f185f_8e8796246cbe49339015cb81760397eb~mv2.png/v1/fill/w_980,h_974,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Heidi_pilates.png"
+        alt="Heidi Monsen"
       >
-        Log in / My Account
-      </a>
 
+      <div class="card-content">
+        <div class="tag">Your account</div>
+        <h2>Log in / My Account</h2>
+        <p>
+          Create an account or log in to your
+          Heidi Monsen Pilates customer account.
+        </p>
+
+        <a class="btn" href="./login.html">
+          Go to account
+        </a>
+      </div>
     </div>
 
   </section>
@@ -327,33 +388,19 @@
 
   <!-- CLASSES -->
 
-  <section
-    id="classes"
-    class="hidden"
-  >
+  <section id="classes" class="hidden">
 
-    <div class="tag">
-      Group classes
-    </div>
-
-    <h2>
-      Mat Pilates timetable
-    </h2>
+    <div class="tag">Group classes</div>
+    <h2>Mat Pilates timetable</h2>
 
     <div class="notice">
-      Online booking will be added next.
-      For now you can enquire about a class.
+      Online payments and live booking will be added next.
+      For now, this section prepares a class enquiry.
     </div>
 
+    <label for="filter">Filter by day</label>
 
-    <label for="filter">
-      Filter by day
-    </label>
-
-    <select
-      id="filter"
-      onchange="drawClasses()"
-    >
+    <select id="filter" onchange="drawClasses()">
       <option>All days</option>
       <option>Monday</option>
       <option>Tuesday</option>
@@ -362,7 +409,6 @@
       <option>Friday</option>
     </select>
 
-
     <div id="classList"></div>
 
   </section>
@@ -370,10 +416,7 @@
 
   <!-- CLASS ENQUIRY -->
 
-  <section
-    id="classEnquiry"
-    class="hidden"
-  >
+  <section id="classEnquiry" class="hidden">
 
     <button
       class="outline"
@@ -382,55 +425,28 @@
       ← Timetable
     </button>
 
-    <h2>
-      Class enquiry
-    </h2>
+    <div class="small-gap"></div>
+
+    <h2>Class enquiry</h2>
 
     <div
       id="classSummary"
       class="notice"
     ></div>
 
-
     <form id="classForm">
 
-      <label>
-        Full name
-      </label>
+      <label>Full name</label>
+      <input id="className" required>
 
-      <input
-        id="className"
-        required
-      >
+      <label>Email address</label>
+      <input id="classEmail" type="email" required>
 
-
-      <label>
-        Email address
-      </label>
-
-      <input
-        id="classEmail"
-        type="email"
-        required
-      >
-
-
-      <label>
-        Enquiry type
-      </label>
-
+      <label>Enquiry type</label>
       <select id="classType">
-
-        <option>
-          Full-term place
-        </option>
-
-        <option>
-          Drop-in availability
-        </option>
-
+        <option>Full-term place</option>
+        <option>Drop-in availability</option>
       </select>
-
 
       <button
         class="wide"
@@ -438,132 +454,96 @@
       >
         Prepare enquiry email
       </button>
-
     </form>
+
+    <p class="muted" style="margin-top:14px;">
+      This opens the customer’s email app with the class enquiry filled in.
+    </p>
 
   </section>
 
 
   <!-- REFORMER -->
 
-  <section
-    id="reformer"
-    class="hidden"
-  >
+  <section id="reformer" class="hidden">
 
-    <div class="tag">
-      Private Pilates
+    <div class="tag">Private Pilates</div>
+    <h2>Reformer session enquiry</h2>
+
+    <div class="card">
+      <img
+        class="card-image"
+        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC04433_JPG.jpg"
+        alt="Reformer studio"
+      >
+
+      <div class="card-content">
+        <p>
+          Private reformer sessions are arranged directly with Heidi.
+          Customers enquire below rather than choosing and paying for a slot here.
+        </p>
+
+        <form id="reformerForm">
+
+          <label>Full name</label>
+          <input id="rName" required>
+
+          <label>Email address</label>
+          <input id="rEmail" type="email" required>
+
+          <label>Phone number</label>
+          <input id="rPhone" type="tel">
+
+          <label>Session type</label>
+          <select id="rType">
+            <option>One-to-one</option>
+            <option>Two people</option>
+          </select>
+
+          <label>Your enquiry</label>
+          <textarea id="rMessage" rows="4"></textarea>
+
+          <button
+            class="wide"
+            style="margin-top:16px"
+          >
+            Prepare enquiry email
+          </button>
+        </form>
+      </div>
     </div>
-
-    <h2>
-      Reformer session enquiry
-    </h2>
-
-    <p>
-      Private reformer sessions are arranged directly
-      with Heidi.
-    </p>
-
-
-    <form id="reformerForm">
-
-      <label>
-        Full name
-      </label>
-
-      <input
-        id="rName"
-        required
-      >
-
-
-      <label>
-        Email address
-      </label>
-
-      <input
-        id="rEmail"
-        type="email"
-        required
-      >
-
-
-      <label>
-        Phone number
-      </label>
-
-      <input
-        id="rPhone"
-        type="tel"
-      >
-
-
-      <label>
-        Session type
-      </label>
-
-      <select id="rType">
-
-        <option>
-          One-to-one
-        </option>
-
-        <option>
-          Two people
-        </option>
-
-      </select>
-
-
-      <label>
-        Your enquiry
-      </label>
-
-      <textarea
-        id="rMessage"
-        rows="4"
-      ></textarea>
-
-
-      <button
-        class="wide"
-        style="margin-top:16px"
-      >
-        Prepare enquiry email
-      </button>
-
-    </form>
 
   </section>
 
 
   <!-- CONTACT -->
 
-  <section
-    id="contact"
-    class="hidden"
-  >
+  <section id="contact" class="hidden">
 
-    <h2>
-      Contact Heidi
-    </h2>
+    <div class="tag">Contact</div>
+    <h2>Contact Heidi</h2>
 
     <div class="card">
-
-      <p>
-        Questions about classes,
-        availability or private sessions?
-      </p>
-
-      <a
-        class="btn"
-        href="https://www.pilatesguildford.co.uk/contact"
-        target="_blank"
-        rel="noopener"
+      <img
+        class="card-image"
+        src="https://static.wixstatic.com/media/0f185f_def4f66608ed402da94dbe91c34583d7~mv2.jpg/v1/crop/x_161,y_0,w_2695,h_1611/fill/w_880,h_526,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screen%2520Shot%25202018-01-02%2520at%252014_02_edited.jpg"
+        alt="Pilates image"
       >
-        Contact Heidi
-      </a>
 
+      <div class="card-content">
+        <p>
+          Questions about classes, reformer sessions or availability?
+        </p>
+
+        <a
+          class="btn"
+          href="https://www.pilatesguildford.co.uk/contact"
+          target="_blank"
+          rel="noopener"
+        >
+          Contact Heidi
+        </a>
+      </div>
     </div>
 
   </section>
@@ -578,24 +558,20 @@
       Home
     </button>
 
-
     <button onclick="showPage('classes')">
       ▦<br>
       Classes
     </button>
-
 
     <button onclick="showPage('reformer')">
       ♡<br>
       Reformer
     </button>
 
-
     <button onclick="showPage('contact')">
       ✉<br>
       Contact
     </button>
-
 
     <a href="./login.html">
       ◯<br>
@@ -608,409 +584,149 @@
 
 
 <script>
-
   const sessions = [
-
-    [
-      "Monday",
-      "09:15",
-      "Intermediate / Advanced",
-      "Shalford Upper Village Hall"
-    ],
-
-    [
-      "Monday",
-      "10:30",
-      "Mixed Ability",
-      "Shalford Upper Village Hall"
-    ],
-
-    [
-      "Tuesday",
-      "09:15",
-      "Mixed Ability",
-      "Shalford Upper Village Hall"
-    ],
-
-    [
-      "Tuesday",
-      "10:20",
-      "Intermediate / Advanced",
-      "Shalford Upper Village Hall"
-    ],
-
-    [
-      "Wednesday",
-      "09:30",
-      "Mixed Ability",
-      "Blackheath Village Hall"
-    ],
-
-    [
-      "Wednesday",
-      "10:40",
-      "Gentle",
-      "Blackheath Village Hall"
-    ],
-
-    [
-      "Wednesday",
-      "18:30",
-      "Mixed Ability",
-      "Blackheath Village Hall"
-    ],
-
-    [
-      "Wednesday",
-      "19:35",
-      "Intermediate / Advanced",
-      "Blackheath Village Hall"
-    ],
-
-    [
-      "Thursday",
-      "19:00",
-      "Intermediate / Advanced",
-      "Blackheath Village Hall"
-    ],
-
-    [
-      "Friday",
-      "09:30",
-      "Mixed Ability",
-      "Blackheath Village Hall"
-    ]
-
+    ["Monday", "09:15", "Intermediate / Advanced", "Shalford Upper Village Hall"],
+    ["Monday", "10:30", "Mixed Ability", "Shalford Upper Village Hall"],
+    ["Tuesday", "09:15", "Mixed Ability", "Shalford Upper Village Hall"],
+    ["Tuesday", "10:20", "Intermediate / Advanced", "Shalford Upper Village Hall"],
+    ["Wednesday", "09:30", "Mixed Ability", "Blackheath Village Hall"],
+    ["Wednesday", "10:40", "Gentle", "Blackheath Village Hall"],
+    ["Wednesday", "18:30", "Mixed Ability", "Blackheath Village Hall"],
+    ["Wednesday", "19:35", "Intermediate / Advanced", "Blackheath Village Hall"],
+    ["Thursday", "19:00", "Intermediate / Advanced", "Blackheath Village Hall"],
+    ["Friday", "09:30", "Mixed Ability", "Blackheath Village Hall"]
   ];
-
 
   let chosenClass = null;
 
-
   function showPage(pageId) {
-
     document
       .querySelectorAll("main > section")
       .forEach(function(section) {
-
         section.classList.add("hidden");
-
       });
 
-
-    const page =
-      document.getElementById(pageId);
-
+    const page = document.getElementById(pageId);
 
     if (page) {
-
       page.classList.remove("hidden");
-
     }
 
-
     window.scrollTo(0, 0);
-
   }
-
 
   function drawClasses() {
-
-    const selectedDay =
-      document.getElementById("filter").value;
-
-
-    const list =
-      document.getElementById("classList");
-
-
+    const selectedDay = document.getElementById("filter").value;
+    const list = document.getElementById("classList");
     list.innerHTML = "";
 
-
     sessions.forEach(function(session, index) {
-
-      if (
-        selectedDay !== "All days" &&
-        session[0] !== selectedDay
-      ) {
-
+      if (selectedDay !== "All days" && session[0] !== selectedDay) {
         return;
-
       }
 
+      const card = document.createElement("div");
+      card.className = "card";
 
-      const card =
-        document.createElement("div");
+      card.innerHTML = `
+        <img
+          class="card-image"
+          src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/crop/x_31,y_49,w_2939,h_1951/fill/w_980,h_651,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC06591_JPG.jpg"
+          alt="Mat Pilates class"
+        >
+        <div class="card-content">
+          <div class="tag">${session[0]} · ${session[1]}</div>
+          <h3>${session[2]}</h3>
+          <p>${session[3]}</p>
+        </div>
+      `;
 
+      const content = card.querySelector(".card-content");
 
-      card.className =
-        "card";
+      const button = document.createElement("button");
+      button.className = "outline";
+      button.textContent = "Enquire about this class";
 
+      button.onclick = function() {
+        chosenClass = index;
 
-      const top =
-        document.createElement("div");
+        document.getElementById("classSummary").textContent =
+          session[0] + " " + session[1] + " — " + session[2] + " · " + session[3];
 
+        showPage("classEnquiry");
+      };
 
-      top.className =
-        "tag";
-
-
-      top.textContent =
-        session[0] +
-        " · " +
-        session[1];
-
-
-      const title =
-        document.createElement("h3");
-
-
-      title.textContent =
-        session[2];
-
-
-      const place =
-        document.createElement("p");
-
-
-      place.textContent =
-        session[3];
-
-
-      const button =
-        document.createElement("button");
-
-
-      button.className =
-        "outline";
-
-
-      button.textContent =
-        "Enquire about this class";
-
-
-      button.onclick =
-        function() {
-
-          chosenClass =
-            index;
-
-
-          document
-            .getElementById("classSummary")
-            .textContent =
-              session[0] +
-              " " +
-              session[1] +
-              " — " +
-              session[2] +
-              " · " +
-              session[3];
-
-
-          showPage("classEnquiry");
-
-        };
-
-
-      card.append(
-        top,
-        title,
-        place,
-        button
-      );
-
-
+      content.appendChild(button);
       list.appendChild(card);
-
     });
-
   }
-
 
   document
     .getElementById("classForm")
-    .addEventListener(
-      "submit",
-      function(event) {
+    .addEventListener("submit", function(event) {
+      event.preventDefault();
 
-        event.preventDefault();
-
-
-        if (chosenClass === null) {
-          return;
-        }
-
-
-        const session =
-          sessions[chosenClass];
-
-
-        const name =
-          document.getElementById(
-            "className"
-          ).value;
-
-
-        const email =
-          document.getElementById(
-            "classEmail"
-          ).value;
-
-
-        const type =
-          document.getElementById(
-            "classType"
-          ).value;
-
-
-        const subject =
-          encodeURIComponent(
-            "Mat Pilates class enquiry"
-          );
-
-
-        const body =
-          encodeURIComponent(
-            "Name: " +
-            name +
-            "\n\nEmail: " +
-            email +
-            "\n\nClass: " +
-            session.join(" | ") +
-            "\n\nEnquiry: " +
-            type
-          );
-
-
-        window.location.href =
-          "mailto:heidi@heidimonsen.co.uk" +
-          "?subject=" +
-          subject +
-          "&body=" +
-          body;
-
+      if (chosenClass === null) {
+        return;
       }
-    );
 
+      const session = sessions[chosenClass];
+      const name = document.getElementById("className").value;
+      const email = document.getElementById("classEmail").value;
+      const type = document.getElementById("classType").value;
+
+      const subject = encodeURIComponent("Mat Pilates class enquiry");
+
+      const body = encodeURIComponent(
+        "Name: " + name +
+        "\n\nEmail: " + email +
+        "\n\nClass: " + session.join(" | ") +
+        "\n\nEnquiry: " + type
+      );
+
+      window.location.href =
+        "mailto:heidi@heidimonsen.co.uk?subject=" + subject + "&body=" + body;
+    });
 
   document
     .getElementById("reformerForm")
-    .addEventListener(
-      "submit",
-      function(event) {
+    .addEventListener("submit", function(event) {
+      event.preventDefault();
 
-        event.preventDefault();
+      const name = document.getElementById("rName").value;
+      const email = document.getElementById("rEmail").value;
+      const phone = document.getElementById("rPhone").value;
+      const type = document.getElementById("rType").value;
+      const message = document.getElementById("rMessage").value;
 
+      const subject = encodeURIComponent("Private Reformer Pilates enquiry");
 
-        const name =
-          document.getElementById(
-            "rName"
-          ).value;
+      const body = encodeURIComponent(
+        "Name: " + name +
+        "\n\nEmail: " + email +
+        "\n\nPhone: " + phone +
+        "\n\nSession: " + type +
+        "\n\nMessage: " + message
+      );
 
-
-        const email =
-          document.getElementById(
-            "rEmail"
-          ).value;
-
-
-        const phone =
-          document.getElementById(
-            "rPhone"
-          ).value;
-
-
-        const type =
-          document.getElementById(
-            "rType"
-          ).value;
-
-
-        const message =
-          document.getElementById(
-            "rMessage"
-          ).value;
-
-
-        const subject =
-          encodeURIComponent(
-            "Private Reformer Pilates enquiry"
-          );
-
-
-        const body =
-          encodeURIComponent(
-            "Name: " +
-            name +
-            "\n\nEmail: " +
-            email +
-            "\n\nPhone: " +
-            phone +
-            "\n\nSession: " +
-            type +
-            "\n\nMessage: " +
-            message
-          );
-
-
-        window.location.href =
-          "mailto:heidi@heidimonsen.co.uk" +
-          "?subject=" +
-          subject +
-          "&body=" +
-          body;
-
-      }
-    );
-
+      window.location.href =
+        "mailto:heidi@heidimonsen.co.uk?subject=" + subject + "&body=" + body;
+    });
 
   drawClasses();
-
   showPage("home");
 
-
-  /*
-    Service worker update handling.
-
-    This tells the browser to check for a newer
-    version of the app whenever the page loads.
-  */
-
   if ("serviceWorker" in navigator) {
-
-    window.addEventListener(
-      "load",
-      async function() {
-
-        try {
-
-          const registration =
-            await navigator.serviceWorker.register(
-              "./sw.js"
-            );
-
-
-          registration.update();
-
-        }
-
-        catch (error) {
-
-          console.log(
-            "Service worker unavailable",
-            error
-          );
-
-        }
-
+    window.addEventListener("load", async function() {
+      try {
+        const registration = await navigator.serviceWorker.register("./sw.js");
+        registration.update();
+      } catch (error) {
+        console.log("Service worker unavailable", error);
       }
-    );
-
+    });
   }
-
 </script>
 
 </body>
-
 </html>
