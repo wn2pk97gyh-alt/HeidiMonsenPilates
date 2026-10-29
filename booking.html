@@ -17,6 +17,7 @@
   <title>Book a Class | Heidi Monsen Pilates</title>
 
   <style>
+
     :root {
       --bg: #f8eef1;
       --panel: #fffafb;
@@ -25,8 +26,6 @@
       --text: #5c4950;
       --muted: #8b727a;
       --line: #ecd7dd;
-      --green-bg: #e9f4eb;
-      --green: #4f7c59;
 
       font-family: Arial, sans-serif;
     }
@@ -145,7 +144,6 @@
     .option-top {
       display: flex;
       justify-content: space-between;
-      align-items: start;
       gap: 15px;
     }
 
@@ -201,6 +199,24 @@
       margin-top: 10px;
     }
 
+    .top-links {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .top-links a {
+      flex: 1;
+      padding: 11px;
+      border: 1px solid #dcb4c1;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--pink-dark);
+      background: white;
+      font-size: 14px;
+    }
+
     .notice {
       background: #fdf3f6;
       border: 1px solid var(--line);
@@ -220,14 +236,6 @@
       display: none;
     }
 
-    .success {
-      background: var(--green-bg);
-      color: var(--green);
-      padding: 13px;
-      border-radius: 11px;
-      margin-top: 12px;
-    }
-
   </style>
 
 </head>
@@ -245,6 +253,23 @@
     <div class="brand-sub">
       P I L A T E S
     </div>
+
+  </div>
+
+
+  <div class="top-links">
+
+    <a href="./index.html">
+      Home
+    </a>
+
+    <a href="./index.html?classes=1">
+      Classes
+    </a>
+
+    <a href="./login.html">
+      Account
+    </a>
 
   </div>
 
@@ -294,8 +319,6 @@
       </h2>
 
 
-      <!-- PAYG -->
-
       <div
         id="paygOption"
         class="option"
@@ -329,8 +352,6 @@
 
       </div>
 
-
-      <!-- COURSE -->
 
       <div
         id="courseOption"
@@ -389,9 +410,9 @@
 
       <button
         class="secondary"
-        onclick="goBack()"
+        onclick="goBackToClasses()"
       >
-        Back to timetable
+        ← Back to classes
       </button>
 
     </div>
@@ -408,22 +429,8 @@
 <script>
 
   let sessionData = null;
-
   let courseData = null;
-
   let selectedOption = null;
-
-
-  function escapeHtml(value) {
-
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-
-  }
 
 
   function formatDate(dateString) {
@@ -453,11 +460,7 @@
       return "";
     }
 
-
-    return timeString.substring(
-      0,
-      5
-    );
+    return timeString.substring(0, 5);
 
   }
 
@@ -512,10 +515,7 @@
             allow_course_booking
           )
         `)
-        .eq(
-          "id",
-          sessionId
-        )
+        .eq("id", sessionId)
         .single();
 
 
@@ -526,12 +526,10 @@
 
       console.error(error);
 
-
       document
         .getElementById("loading")
         .textContent =
           "This class could not be loaded.";
-
 
       return;
 
@@ -585,24 +583,16 @@
       .getElementById("sessionMeta")
       .innerHTML =
         `
-          ${escapeHtml(
-            formatTime(
-              sessionData.start_time
-            )
-          )}
+          ${formatTime(sessionData.start_time)}
           –
-          ${escapeHtml(
-            calculateEndTime(
-              sessionData.start_time,
-              sessionData.duration_minutes || 55
-            )
+          ${calculateEndTime(
+            sessionData.start_time,
+            sessionData.duration_minutes || 55
           )}
 
           <br>
 
-          ${escapeHtml(
-            sessionData.venue || ""
-          )}
+          ${sessionData.venue || ""}
 
           <br>
 
@@ -619,9 +609,7 @@
     document
       .getElementById("paygPrice")
       .textContent =
-        money(
-          paygPrice
-        );
+        money(paygPrice);
 
 
     if (
@@ -668,10 +656,8 @@
           <br>
 
           Course runs until
-          ${escapeHtml(
-            formatDate(
-              courseData.end_date
-            )
+          ${formatDate(
+            courseData.end_date
           )}.
         `;
 
@@ -707,10 +693,7 @@
 
     return date
       .toTimeString()
-      .substring(
-        0,
-        5
-      );
+      .substring(0, 5);
 
   }
 
@@ -730,19 +713,13 @@
     const month =
       String(
         today.getMonth() + 1
-      ).padStart(
-        2,
-        "0"
-      );
+      ).padStart(2, "0");
 
 
     const day =
       String(
         today.getDate()
-      ).padStart(
-        2,
-        "0"
-      );
+      ).padStart(2, "0");
 
 
     const todayString =
@@ -782,9 +759,7 @@
   }
 
 
-  function selectOption(
-    type
-  ) {
+  function selectOption(type) {
 
     selectedOption =
       type;
@@ -808,35 +783,18 @@
       );
 
 
-    const button =
-      document.getElementById(
-        "continueButton"
-      );
+    document
+      .getElementById("continueButton")
+      .disabled =
+        false;
 
 
-    button.disabled =
-      false;
-
-
-    if (
-      type === "payg"
-    ) {
-
-      document
-        .getElementById("choiceMessage")
-        .textContent =
-          "You are booking this session only.";
-
-    }
-
-    else {
-
-      document
-        .getElementById("choiceMessage")
-        .textContent =
-          "You are choosing the whole course.";
-
-    }
+    document
+      .getElementById("choiceMessage")
+      .textContent =
+        type === "payg"
+          ? "You are booking this session only."
+          : "You are choosing the whole course.";
 
   }
 
@@ -850,14 +808,6 @@
       return;
     }
 
-
-    /*
-      Save the customer's booking choice.
-
-      We do NOT create the booking yet.
-
-      Payment will be added next.
-    */
 
     localStorage.setItem(
       "pendingPilatesSession",
@@ -903,28 +853,19 @@
     }
 
 
-    /*
-      For now we stop here.
-
-      The next step is Stripe payment.
-
-      After payment succeeds,
-      the booking will be created.
-    */
-
     alert(
       selectedOption === "payg"
-        ? "PAYG selected. Next we will connect the £17 payment."
-        : "Whole course selected. Next we will connect the £180 payment."
+        ? "PAYG selected. Next step is the £17 payment."
+        : "Whole course selected. Next step is the £180 payment."
     );
 
   }
 
 
-  function goBack() {
+  function goBackToClasses() {
 
     window.location.href =
-      "./index.html";
+      "./index.html?classes=1";
 
   }
 
