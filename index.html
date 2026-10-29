@@ -1,23 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6dfe6">
-  <meta name="description" content="Heidi Monsen Pilates">
 
-  <link rel="manifest" href="./manifest.webmanifest">
+  <meta charset="UTF-8">
 
-  <title>Heidi Monsen Pilates</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f6dfe6"
+  >
+
+  <title>
+    My Account | Heidi Monsen Pilates
+  </title>
+
 
   <style>
+
     :root {
       --bg: #f8eef1;
       --panel: #fffafb;
-      --pink: #f3d8e0;
-      --pink-dark: #b6788c;
-      --pink-deep: #9f6276;
+      --pink: #b6788c;
+      --pink-dark: #9f6276;
       --text: #5c4950;
       --muted: #8b727a;
       --line: #ecd7dd;
@@ -33,46 +43,45 @@
       box-sizing: border-box;
     }
 
-    html,
     body {
       margin: 0;
+      min-height: 100vh;
       background: var(--bg);
       color: var(--text);
+      padding: 20px;
     }
 
-    main {
-      max-width: 640px;
+    .container {
+      width: 100%;
+      max-width: 540px;
       margin: auto;
-      min-height: 100vh;
-      background: var(--panel);
-      padding-bottom: 95px;
-    }
-
-    header {
-      padding: 22px 20px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff8fa;
-      border-bottom: 1px solid var(--line);
     }
 
     .brand {
-      letter-spacing: 3px;
+      text-align: center;
+      margin: 20px 0 25px;
+    }
+
+    .brand-name {
       font-weight: bold;
-      font-size: 15px;
+      letter-spacing: 3px;
       color: #7d4f60;
     }
 
-    .sub {
+    .brand-sub {
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--muted);
       margin-top: 5px;
     }
 
-    section {
-      padding: 20px;
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 20px rgba(183,120,140,.07);
     }
 
     h1,
@@ -84,508 +93,402 @@
     }
 
     h1 {
-      font-size: 38px;
-      line-height: 1.15;
-      margin: 0 0 12px;
+      text-align: center;
+      margin-top: 0;
     }
 
     h2 {
-      font-size: 28px;
-      margin: 0 0 12px;
+      margin-top: 0;
     }
 
     h3 {
-      font-size: 22px;
-      margin: 8px 0;
+      margin-bottom: 6px;
     }
 
     p {
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    .hero {
-      overflow: hidden;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: #f8e7ec;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 235px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-content {
-      padding: 22px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      margin: 14px 0;
-      overflow: hidden;
-      box-shadow: 0 8px 18px rgba(183,120,140,.06);
-    }
-
-    .card-content {
-      padding: 18px;
-    }
-
-    .card-image {
-      width: 100%;
-      height: 185px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.3px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .notice {
-      background: #fdf3f6;
-      border: 1px solid var(--line);
+    .tabs {
+      display: flex;
+      background: #f6e9ed;
       border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 16px;
-      font-size: 13px;
+      padding: 5px;
+      gap: 5px;
+      margin-bottom: 20px;
     }
 
-    .status {
-      display: inline-block;
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: bold;
-      margin: 8px 0 14px;
-    }
-
-    .available {
-      background: var(--green-bg);
-      color: var(--green);
-    }
-
-    .full {
-      background: var(--red-bg);
-      color: var(--red);
-    }
-
-    .booked {
-      background: #f3e6ef;
-      color: #86536d;
-    }
-
-    button,
-    .btn {
-      font: inherit;
+    .tab {
+      flex: 1;
       border: 0;
-      background: var(--pink-dark);
-      color: white;
-      border-radius: 10px;
-      padding: 13px 16px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    button.outline {
       background: transparent;
-      color: var(--pink-deep);
-      border: 1px solid #dcb4c1;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 15px;
     }
 
-    button:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-    }
-
-    .wide {
-      width: 100%;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #e5c8d1;
-      border-radius: 10px;
+    .tab.active {
       background: white;
-      font: inherit;
+      font-weight: bold;
     }
 
     label {
       display: block;
-      margin: 14px 0 7px;
+      margin: 14px 0 6px;
       font-size: 13px;
       font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #e5c8d1;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button,
+    .btn {
+      width: 100%;
+      border: 0;
+      background: var(--pink);
+      color: white;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: var(--pink-dark);
+      border: 1px solid #dcb4c1;
+    }
+
+    button.danger {
+      background: transparent;
+      border: 1px solid #e5b8c0;
+      color: var(--red);
+      margin-top: 12px;
+    }
+
+    button:disabled {
+      opacity: .55;
+    }
+
+    .message {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .success {
+      display: block;
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .error {
+      display: block;
+      background: var(--red-bg);
+      color: var(--red);
     }
 
     .hidden {
       display: none;
     }
 
-    .loading {
-      text-align: center;
-      padding: 35px 10px;
-      color: var(--muted);
-    }
-
-    .class-date {
-      color: #8b596b;
+    .email {
       font-weight: bold;
-      margin-bottom: 5px;
+      word-break: break-word;
     }
 
-    .class-time {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 640px;
-      display: flex;
+    .booking {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
       background: #fffafb;
-      border-top: 1px solid var(--line);
-      padding-bottom: env(safe-area-inset-bottom);
     }
 
-    nav button,
-    nav a {
-      flex: 1;
-      border: 0;
-      background: transparent;
-      color: #946572;
-      font-size: 11px;
-      text-align: center;
-      padding: 13px 3px;
-      text-decoration: none;
-      border-radius: 0;
+    .booking-date {
+      font-weight: bold;
+      color: #86566a;
     }
+
+    .booking-meta {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .pending {
+      background: #fdf3f6;
+      border: 1px solid #e8cad3;
+    }
+
+    .home-link {
+      text-align: center;
+      display: block;
+      margin: 18px 0 30px;
+      color: #9f6276;
+      text-decoration: none;
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
-<main>
+<div class="container">
 
-  <header>
-    <div>
-      <div class="brand">HEIDI MONSEN</div>
-      <div class="sub">P I L A T E S</div>
+  <div class="brand">
+
+    <div class="brand-name">
+      HEIDI MONSEN
     </div>
 
-    <span style="font-size:26px;color:#bf7f95;">✿</span>
-  </header>
-
-
-  <!-- HOME -->
-
-  <section id="home">
-
-    <div class="hero">
-
-      <img
-        src="https://static.wixstatic.com/media/0f185f_725e8267b36f406a80130c5cce46a2c7~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85/Screen%20Shot%202018-01-02%20at%2013_59_57.jpg"
-        alt="Pilates"
-      >
-
-      <div class="hero-content">
-
-        <div class="tag">Pilates in Guildford</div>
-
-        <h1>
-          Move better.<br>
-          Feel stronger.<br>
-          Live well.
-        </h1>
-
-        <p>
-          Friendly mat Pilates classes in Shalford and
-          Blackheath, plus private reformer sessions.
-        </p>
-
-        <button onclick="showPage('classes')">
-          View live timetable →
-        </button>
-
-      </div>
-
+    <div class="brand-sub">
+      P I L A T E S
     </div>
 
-
-    <div class="card">
-
-      <img
-        class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_a32a5562811041ceb89bec2bd7b12610~mv2.jpg/v1/fill/w_980,h_651,al_c,q_85/DSC06591_JPG.jpg"
-        alt="Mat Pilates"
-      >
-
-      <div class="card-content">
-
-        <div class="tag">Mat Pilates</div>
-
-        <h2>Classes</h2>
-
-        <p>
-          View the live timetable, availability and book
-          classes using your account.
-        </p>
-
-        <button
-          class="outline"
-          onclick="showPage('classes')"
-        >
-          View classes
-        </button>
-
-      </div>
-
-    </div>
+  </div>
 
 
-    <div class="card">
+  <!-- LOGIN / SIGNUP -->
 
-      <img
-        class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85/DSC04433_JPG.jpg"
-        alt="Reformer Pilates"
-      >
-
-      <div class="card-content">
-
-        <div class="tag">Private Pilates</div>
-
-        <h2>Reformer</h2>
-
-        <p>
-          Private reformer sessions are arranged directly
-          with Heidi.
-        </p>
-
-        <button
-          class="outline"
-          onclick="showPage('reformer')"
-        >
-          Make an enquiry
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-content">
-
-        <div class="tag">Customer account</div>
-
-        <h2>My Account</h2>
-
-        <p>
-          Log in, view bookings or create an account.
-        </p>
-
-        <a
-          class="btn"
-          href="./login.html"
-        >
-          My Account
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CLASSES -->
-
-  <section
-    id="classes"
-    class="hidden"
+  <div
+    id="authScreen"
+    class="card"
   >
 
-    <div class="tag">Live timetable</div>
+    <h1>
+      My Account
+    </h1>
 
-    <h2>Upcoming Classes</h2>
 
-    <div class="notice">
-      This timetable is loaded directly from the live booking database.
+    <div class="tabs">
+
+      <button
+        id="loginTab"
+        class="tab active"
+        onclick="showLogin()"
+      >
+        Log in
+      </button>
+
+      <button
+        id="signupTab"
+        class="tab"
+        onclick="showSignup()"
+      >
+        Create account
+      </button>
+
     </div>
 
 
-    <label for="dayFilter">
-      Filter by day
-    </label>
+    <div id="loginForm">
 
-    <select
-      id="dayFilter"
-      onchange="renderClasses()"
-    >
-      <option value="all">All days</option>
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option>
-    </select>
+      <label>
+        Email
+      </label>
+
+      <input
+        id="loginEmail"
+        type="email"
+        autocomplete="email"
+      >
+
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password"
+      >
+
+
+      <button
+        id="loginButton"
+        onclick="login()"
+      >
+        Log in
+      </button>
+
+    </div>
 
 
     <div
-      id="classList"
-      class="loading"
+      id="signupForm"
+      class="hidden"
     >
-      Loading timetable...
-    </div>
 
-  </section>
+      <label>
+        Full name
+      </label>
 
-
-  <!-- REFORMER -->
-
-  <section
-    id="reformer"
-    class="hidden"
-  >
-
-    <div class="tag">Private Pilates</div>
-
-    <h2>Reformer Session Enquiry</h2>
-
-
-    <div class="card">
-
-      <img
-        class="card-image"
-        src="https://static.wixstatic.com/media/0f185f_b71aa86e6f3c4f59b0ab7e6bf9d31c86~mv2.jpg/v1/fill/w_980,h_652,al_c,q_85/DSC04433_JPG.jpg"
-        alt="Reformer studio"
+      <input
+        id="signupName"
+        type="text"
+        autocomplete="name"
       >
 
-      <div class="card-content">
 
-        <p>
-          Private sessions are arranged directly with Heidi.
-        </p>
+      <label>
+        Email
+      </label>
+
+      <input
+        id="signupEmail"
+        type="email"
+        autocomplete="email"
+      >
 
 
-        <form id="reformerForm">
+      <label>
+        Password
+      </label>
 
-          <label>Full name</label>
-          <input id="rName" required>
+      <input
+        id="signupPassword"
+        type="password"
+        autocomplete="new-password"
+      >
 
-          <label>Email</label>
-          <input id="rEmail" type="email" required>
 
-          <label>Phone number</label>
-          <input id="rPhone" type="tel">
-
-          <label>Session</label>
-
-          <select id="rType">
-            <option>One-to-one</option>
-            <option>Two people</option>
-          </select>
-
-          <label>Message</label>
-
-          <textarea
-            id="rMessage"
-            rows="4"
-          ></textarea>
-
-          <button
-            class="wide"
-            style="margin-top:16px"
-          >
-            Prepare enquiry
-          </button>
-
-        </form>
-
-      </div>
+      <button
+        id="signupButton"
+        onclick="signup()"
+      >
+        Create account
+      </button>
 
     </div>
 
-  </section>
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+  </div>
 
 
-  <!-- CONTACT -->
+  <!-- ACCOUNT -->
 
-  <section
-    id="contact"
+  <div
+    id="accountScreen"
     class="hidden"
   >
 
-    <div class="tag">Contact</div>
-
-    <h2>Contact Heidi</h2>
-
     <div class="card">
-      <div class="card-content">
 
-        <p>
-          Questions about classes or private sessions?
-        </p>
+      <h2>
+        My Account
+      </h2>
 
-        <a
-          class="btn"
-          href="https://www.pilatesguildford.co.uk/contact"
-          target="_blank"
-          rel="noopener"
-        >
-          Contact Heidi
-        </a>
+      <p>
+        Logged in as
+      </p>
 
-      </div>
+      <p
+        id="accountEmail"
+        class="email"
+      ></p>
+
     </div>
 
-  </section>
+
+    <!-- PENDING BOOKING -->
+
+    <div
+      id="pendingCard"
+      class="card pending hidden"
+    >
+
+      <h2>
+        Finish your booking
+      </h2>
+
+      <div id="pendingDetails">
+        Loading class...
+      </div>
+
+      <button
+        id="confirmBookingButton"
+        onclick="confirmPendingBooking()"
+      >
+        Confirm booking
+      </button>
+
+      <button
+        class="secondary"
+        onclick="clearPendingBooking()"
+      >
+        Not now
+      </button>
+
+    </div>
 
 
-  <!-- NAV -->
+    <!-- BOOKINGS -->
 
-  <nav>
+    <div class="card">
 
-    <button onclick="showPage('home')">
-      ⌂<br>Home
-    </button>
+      <h2>
+        My Bookings
+      </h2>
 
-    <button onclick="showPage('classes')">
-      ▦<br>Classes
-    </button>
+      <div id="bookingList">
+        Loading bookings...
+      </div>
 
-    <button onclick="showPage('reformer')">
-      ♡<br>Reformer
-    </button>
+    </div>
 
-    <button onclick="showPage('contact')">
-      ✉<br>Contact
-    </button>
 
-    <a href="./login.html">
-      ◯<br>Account
-    </a>
+    <div class="card">
 
-  </nav>
+      <button
+        class="secondary"
+        onclick="goToClasses()"
+      >
+        Browse classes
+      </button>
 
-</main>
+      <button
+        class="danger"
+        onclick="logout()"
+      >
+        Log out
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <a
+    class="home-link"
+    href="./index.html"
+  >
+    ← Back to Heidi Monsen Pilates
+  </a>
+
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
@@ -594,173 +497,220 @@
 
 <script>
 
-  let liveClasses = [];
-  let myBookedSessionIds = new Set();
-
-
-  function localToday() {
-
-    const now = new Date();
-
-    const year = now.getFullYear();
-
-    const month =
-      String(now.getMonth() + 1)
-        .padStart(2, "0");
-
-    const day =
-      String(now.getDate())
-        .padStart(2, "0");
-
-    return year + "-" + month + "-" + day;
-
-  }
-
-
-  function showPage(pageId) {
-
-    document
-      .querySelectorAll("main > section")
-      .forEach(function(section) {
-        section.classList.add("hidden");
-      });
-
-
-    const page =
-      document.getElementById(pageId);
-
-
-    if (page) {
-      page.classList.remove("hidden");
-    }
-
-
-    if (pageId === "classes") {
-      loadClasses();
-    }
-
-
-    window.scrollTo(0, 0);
-
-  }
-
-
-  function formatDate(dateString) {
-
-    const date =
-      new Date(dateString + "T12:00:00");
-
-
-    return date.toLocaleDateString(
-      "en-GB",
-      {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-      }
+  const message =
+    document.getElementById(
+      "message"
     );
 
+
+  let pendingSessionId =
+    null;
+
+
+  function showMessage(
+    text,
+    type
+  ) {
+
+    message.textContent =
+      text;
+
+
+    message.className =
+      "message " +
+      type;
+
   }
 
 
-  function formatTime(timeString) {
+  function clearMessage() {
 
-    if (!timeString) {
-      return "";
-    }
+    message.textContent =
+      "";
 
-    return timeString.substring(0, 5);
+
+    message.className =
+      "message";
 
   }
 
 
-  async function loadMyBookings() {
+  function showLogin() {
 
-    myBookedSessionIds =
-      new Set();
+    clearMessage();
 
 
-    const { data: sessionData } =
-      await supabaseClient.auth.getSession();
+    document
+      .getElementById(
+        "loginForm"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "signupForm"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "loginTab"
+      )
+      .classList
+      .add("active");
+
+
+    document
+      .getElementById(
+        "signupTab"
+      )
+      .classList
+      .remove("active");
+
+  }
+
+
+  function showSignup() {
+
+    clearMessage();
+
+
+    document
+      .getElementById(
+        "signupForm"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "loginForm"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "signupTab"
+      )
+      .classList
+      .add("active");
+
+
+    document
+      .getElementById(
+        "loginTab"
+      )
+      .classList
+      .remove("active");
+
+  }
+
+
+  async function signup() {
+
+    clearMessage();
+
+
+    const name =
+      document
+        .getElementById(
+          "signupName"
+        )
+        .value
+        .trim();
+
+
+    const email =
+      document
+        .getElementById(
+          "signupEmail"
+        )
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById(
+          "signupPassword"
+        )
+        .value;
 
 
     if (
-      !sessionData ||
-      !sessionData.session
+      !name ||
+      !email ||
+      !password
     ) {
-      return;
-    }
 
+      showMessage(
+        "Please complete all fields.",
+        "error"
+      );
 
-    const { data, error } =
-      await supabaseClient
-        .from("class_bookings")
-        .select("session_id,status")
-        .eq("status", "booked");
-
-
-    if (error) {
-
-      console.error(error);
       return;
 
     }
 
 
-    (data || []).forEach(
-      function(booking) {
+    if (
+      password.length < 8
+    ) {
 
-        myBookedSessionIds.add(
-          booking.session_id
-        );
+      showMessage(
+        "Use a password with at least 8 characters.",
+        "error"
+      );
 
-      }
-    );
+      return;
 
-  }
+    }
 
 
-  async function loadClasses() {
-
-    const list =
+    const button =
       document.getElementById(
-        "classList"
+        "signupButton"
       );
 
 
-    list.innerHTML =
-      "Loading timetable...";
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Creating account...";
 
 
     try {
 
-      await loadMyBookings();
-
-
       const { data, error } =
         await supabaseClient
-          .from("class_sessions")
-          .select("*")
-          .gte(
-            "class_date",
-            localToday()
-          )
-          .eq(
-            "status",
-            "active"
-          )
-          .order(
-            "class_date",
-            {
-              ascending: true
+          .auth
+          .signUp({
+
+            email:
+              email,
+
+            password:
+              password,
+
+            options: {
+
+              data: {
+                full_name:
+                  name
+              }
+
             }
-          )
-          .order(
-            "start_time",
-            {
-              ascending: true
-            }
-          );
+
+          });
 
 
       if (error) {
@@ -768,54 +718,545 @@
       }
 
 
-      liveClasses =
-        data || [];
+      if (
+        data &&
+        data.session
+      ) {
+
+        showAccount(
+          data.user
+        );
+
+        return;
+
+      }
 
 
-      renderClasses();
+      showMessage(
+        "Account created. Check your email and confirm your address, then return here and log in.",
+        "success"
+      );
 
     }
 
     catch (error) {
 
-      console.error(error);
+      showMessage(
+        error.message ||
+        "Account could not be created.",
+        "error"
+      );
+
+    }
+
+    finally {
+
+      button.disabled =
+        false;
 
 
-      list.innerHTML =
-        `
-        <div class="notice">
-          The timetable could not be loaded.
-          Please refresh the page.
-        </div>
-        `;
+      button.textContent =
+        "Create account";
 
     }
 
   }
 
 
-  function renderClasses() {
+  async function login() {
 
-    const list =
+    clearMessage();
+
+
+    const email =
+      document
+        .getElementById(
+          "loginEmail"
+        )
+        .value
+        .trim();
+
+
+    const password =
+      document
+        .getElementById(
+          "loginPassword"
+        )
+        .value;
+
+
+    if (
+      !email ||
+      !password
+    ) {
+
+      showMessage(
+        "Enter your email and password.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const button =
       document.getElementById(
-        "classList"
+        "loginButton"
       );
 
 
-    const filter =
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Logging in...";
+
+
+    try {
+
+      const { data, error } =
+        await supabaseClient
+          .auth
+          .signInWithPassword({
+
+            email:
+              email,
+
+            password:
+              password
+
+          });
+
+
+      if (error) {
+        throw error;
+      }
+
+
+      await showAccount(
+        data.user
+      );
+
+    }
+
+    catch (error) {
+
+      showMessage(
+        error.message ||
+        "Login failed.",
+        "error"
+      );
+
+    }
+
+    finally {
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "Log in";
+
+    }
+
+  }
+
+
+  async function showAccount(
+    user
+  ) {
+
+    document
+      .getElementById(
+        "authScreen"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "accountScreen"
+      )
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "accountEmail"
+      )
+      .textContent =
+        user.email;
+
+
+    await loadPendingBooking();
+
+    await loadBookings();
+
+  }
+
+
+  async function loadPendingBooking() {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const urlSession =
+      params.get("session");
+
+
+    const storedSession =
+      localStorage.getItem(
+        "pendingPilatesSession"
+      );
+
+
+    pendingSessionId =
+      urlSession ||
+      storedSession;
+
+
+    if (
+      !pendingSessionId
+    ) {
+
+      document
+        .getElementById(
+          "pendingCard"
+        )
+        .classList
+        .add("hidden");
+
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "pendingPilatesSession",
+      pendingSessionId
+    );
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("class_sessions")
+        .select("*")
+        .eq(
+          "id",
+          pendingSessionId
+        )
+        .single();
+
+
+    if (
+      error ||
+      !data
+    ) {
+
+      clearPendingBooking();
+
+      return;
+
+    }
+
+
+    const date =
+      new Date(
+        data.class_date +
+        "T12:00:00"
+      );
+
+
+    const formattedDate =
+      date.toLocaleDateString(
+        "en-GB",
+        {
+          weekday:
+            "long",
+
+          day:
+            "numeric",
+
+          month:
+            "long"
+        }
+      );
+
+
+    document
+      .getElementById(
+        "pendingDetails"
+      )
+      .innerHTML =
+        `
+          <strong>
+            ${escapeHtml(
+              data.level ||
+              data.class_name ||
+              "Mat Pilates"
+            )}
+          </strong>
+
+          <p>
+            ${escapeHtml(
+              formattedDate
+            )}
+            at
+            ${escapeHtml(
+              data.start_time
+                .substring(0,5)
+            )}
+          </p>
+
+          <p>
+            ${escapeHtml(
+              data.venue || ""
+            )}
+          </p>
+        `;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .remove("hidden");
+
+  }
+
+
+  async function confirmPendingBooking() {
+
+    if (
+      !pendingSessionId
+    ) {
+      return;
+    }
+
+
+    const button =
       document.getElementById(
-        "dayFilter"
-      ).value;
+        "confirmBookingButton"
+      );
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Booking...";
+
+
+    const { error } =
+      await supabaseClient.rpc(
+        "book_class",
+        {
+          p_session_id:
+            pendingSessionId
+        }
+      );
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "Confirm booking";
+
+
+    if (error) {
+
+      alert(
+        error.message
+      );
+
+      return;
+
+    }
+
+
+    localStorage.removeItem(
+      "pendingPilatesSession"
+    );
+
+
+    pendingSessionId =
+      null;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .add("hidden");
+
+
+    window.history.replaceState(
+      {},
+      "",
+      "./login.html"
+    );
+
+
+    alert(
+      "Booking confirmed."
+    );
+
+
+    await loadBookings();
+
+  }
+
+
+  function clearPendingBooking() {
+
+    localStorage.removeItem(
+      "pendingPilatesSession"
+    );
+
+
+    pendingSessionId =
+      null;
+
+
+    document
+      .getElementById(
+        "pendingCard"
+      )
+      .classList
+      .add("hidden");
+
+
+    window.history.replaceState(
+      {},
+      "",
+      "./login.html"
+    );
+
+  }
+
+
+  async function loadBookings() {
+
+    const list =
+      document.getElementById(
+        "bookingList"
+      );
+
+
+    list.innerHTML =
+      "Loading bookings...";
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("class_bookings")
+        .select(`
+          id,
+          session_id,
+          status,
+          booked_at,
+          class_sessions (
+            id,
+            class_name,
+            class_date,
+            start_time,
+            duration_minutes,
+            level,
+            venue
+          )
+        `)
+        .eq(
+          "status",
+          "booked"
+        );
+
+
+    if (error) {
+
+      console.error(error);
+
+
+      list.innerHTML =
+        "Your bookings could not be loaded.";
+
+
+      return;
+
+    }
+
+
+    const bookings =
+      (data || [])
+        .filter(
+          function(booking) {
+
+            return booking.class_sessions;
+
+          }
+        )
+        .sort(
+          function(a, b) {
+
+            const aTime =
+              a.class_sessions.class_date +
+              "T" +
+              a.class_sessions.start_time;
+
+
+            const bTime =
+              b.class_sessions.class_date +
+              "T" +
+              b.class_sessions.start_time;
+
+
+            return aTime.localeCompare(
+              bTime
+            );
+
+          }
+        );
 
 
     list.innerHTML = "";
 
 
-    let shown = 0;
+    if (
+      bookings.length === 0
+    ) {
+
+      list.innerHTML =
+        `
+          <p>
+            You don't have any upcoming bookings yet.
+          </p>
+        `;
 
 
-    liveClasses.forEach(
-      function(session) {
+      return;
+
+    }
+
+
+    bookings.forEach(
+      function(booking) {
+
+        const session =
+          booking.class_sessions;
+
 
         const date =
           new Date(
@@ -824,307 +1265,119 @@
           );
 
 
-        const day =
+        const formattedDate =
           date.toLocaleDateString(
             "en-GB",
             {
-              weekday: "long"
+              weekday:
+                "long",
+
+              day:
+                "numeric",
+
+              month:
+                "long"
             }
           );
 
 
-        if (
-          filter !== "all" &&
-          filter !== day
-        ) {
-          return;
-        }
-
-
-        shown++;
-
-
-        const capacity =
-          Number(
-            session.capacity || 0
-          );
-
-
-        const booked =
-          Number(
-            session.current_booked || 0
-          );
-
-
-        const isFull =
-          capacity > 0 &&
-          booked >= capacity;
-
-
-        const alreadyBooked =
-          myBookedSessionIds.has(
-            session.id
-          );
-
-
-        const card =
+        const box =
           document.createElement(
             "div"
           );
 
 
-        card.className =
-          "card";
+        box.className =
+          "booking";
 
 
-        const content =
-          document.createElement(
-            "div"
-          );
+        box.innerHTML =
+          `
+            <div class="booking-date">
+              ${escapeHtml(
+                formattedDate
+              )}
+            </div>
+
+            <h3>
+              ${escapeHtml(
+                session.level ||
+                session.class_name ||
+                "Mat Pilates"
+              )}
+            </h3>
+
+            <div class="booking-meta">
+              ${escapeHtml(
+                session.start_time.substring(
+                  0,
+                  5
+                )
+              )}
+              ·
+              ${escapeHtml(
+                String(
+                  session.duration_minutes ||
+                  55
+                )
+              )}
+              minutes
+
+              <br>
+
+              ${escapeHtml(
+                session.venue || ""
+              )}
+            </div>
+          `;
 
 
-        content.className =
-          "card-content";
-
-
-        const dateLabel =
-          document.createElement(
-            "div"
-          );
-
-
-        dateLabel.className =
-          "class-date";
-
-
-        dateLabel.textContent =
-          formatDate(
-            session.class_date
-          );
-
-
-        const timeLabel =
-          document.createElement(
-            "div"
-          );
-
-
-        timeLabel.className =
-          "class-time";
-
-
-        timeLabel.textContent =
-          formatTime(
-            session.start_time
-          ) +
-          " · " +
-          (
-            session.duration_minutes ||
-            55
-          ) +
-          " minutes";
-
-
-        const title =
-          document.createElement(
-            "h3"
-          );
-
-
-        title.textContent =
-          session.level ||
-          session.class_name ||
-          "Mat Pilates";
-
-
-        const venue =
-          document.createElement(
-            "p"
-          );
-
-
-        venue.textContent =
-          session.venue || "";
-
-
-        const price =
-          document.createElement(
-            "p"
-          );
-
-
-        const pounds =
-          Number(
-            session.price_pence || 0
-          ) / 100;
-
-
-        price.textContent =
-          pounds > 0
-            ? "Drop-in: £" +
-              pounds.toFixed(2)
-            : "";
-
-
-        const status =
-          document.createElement(
-            "div"
-          );
-
-
-        if (alreadyBooked) {
-
-          status.className =
-            "status booked";
-
-          status.textContent =
-            "BOOKED";
-
-        }
-
-        else if (isFull) {
-
-          status.className =
-            "status full";
-
-          status.textContent =
-            "FULL";
-
-        }
-
-        else {
-
-          status.className =
-            "status available";
-
-          status.textContent =
-            "Available";
-
-        }
-
-
-        const button =
+        const cancel =
           document.createElement(
             "button"
           );
 
 
-        if (alreadyBooked) {
-
-          button.textContent =
-            "Already booked";
-
-          button.disabled =
-            true;
-
-        }
-
-        else if (isFull) {
-
-          button.textContent =
-            "Class full";
-
-          button.disabled =
-            true;
-
-        }
-
-        else {
-
-          button.textContent =
-            "Book this class";
-
-          button.onclick =
-            function() {
-
-              bookSession(
-                session.id
-              );
-
-            };
-
-        }
+        cancel.className =
+          "danger";
 
 
-        content.append(
-          dateLabel,
-          timeLabel,
-          title
+        cancel.textContent =
+          "Cancel booking";
+
+
+        cancel.onclick =
+          function() {
+
+            cancelBooking(
+              booking.session_id
+            );
+
+          };
+
+
+        box.appendChild(
+          cancel
         );
 
 
-        if (session.venue) {
-          content.appendChild(venue);
-        }
-
-
-        if (pounds > 0) {
-          content.appendChild(price);
-        }
-
-
-        content.append(
-          status,
-          button
+        list.appendChild(
+          box
         );
-
-
-        card.appendChild(content);
-
-        list.appendChild(card);
 
       }
     );
 
-
-    if (shown === 0) {
-
-      list.innerHTML =
-        `
-        <div class="notice">
-          No upcoming classes are listed for this day.
-        </div>
-        `;
-
-    }
-
   }
 
 
-  async function bookSession(
+  async function cancelBooking(
     sessionId
   ) {
 
-    const { data } =
-      await supabaseClient.auth.getSession();
-
-
-    if (
-      !data ||
-      !data.session
-    ) {
-
-      localStorage.setItem(
-        "pendingPilatesSession",
-        sessionId
-      );
-
-
-      window.location.href =
-        "./login.html?session=" +
-        encodeURIComponent(
-          sessionId
-        );
-
-
-      return;
-
-    }
-
-
     const confirmed =
       window.confirm(
-        "Confirm this class booking?"
+        "Are you sure you want to cancel this booking?"
       );
 
 
@@ -1135,7 +1388,7 @@
 
     const { error } =
       await supabaseClient.rpc(
-        "book_class",
+        "cancel_class_booking",
         {
           p_session_id:
             sessionId
@@ -1155,138 +1408,128 @@
 
 
     alert(
-      "Booking confirmed."
+      "Booking cancelled."
     );
 
 
-    await loadClasses();
+    await loadBookings();
 
   }
 
 
-  document
-    .getElementById(
-      "reformerForm"
+  async function logout() {
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+
+    document
+      .getElementById(
+        "accountScreen"
+      )
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById(
+        "authScreen"
+      )
+      .classList
+      .remove("hidden");
+
+
+    showLogin();
+
+  }
+
+
+  function goToClasses() {
+
+    window.location.href =
+      "./index.html?classes=1";
+
+  }
+
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(
+      value ?? ""
     )
-    .addEventListener(
-      "submit",
-      function(event) {
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
 
-        event.preventDefault();
-
-
-        const name =
-          document.getElementById(
-            "rName"
-          ).value;
-
-
-        const email =
-          document.getElementById(
-            "rEmail"
-          ).value;
-
-
-        const phone =
-          document.getElementById(
-            "rPhone"
-          ).value;
-
-
-        const type =
-          document.getElementById(
-            "rType"
-          ).value;
+  }
 
 
-        const message =
-          document.getElementById(
-            "rMessage"
-          ).value;
+  async function checkSession() {
+
+    const { data } =
+      await supabaseClient
+        .auth
+        .getSession();
 
 
-        const subject =
-          encodeURIComponent(
-            "Private Reformer Pilates enquiry"
-          );
+    if (
+      data &&
+      data.session
+    ) {
 
+      await showAccount(
+        data.session.user
+      );
 
-        const body =
-          encodeURIComponent(
-            "Name: " +
-            name +
-            "\n\nEmail: " +
-            email +
-            "\n\nPhone: " +
-            phone +
-            "\n\nSession: " +
-            type +
-            "\n\nMessage: " +
-            message
-          );
+    }
 
-
-        window.location.href =
-          "mailto:heidi@heidimonsen.co.uk" +
-          "?subject=" +
-          subject +
-          "&body=" +
-          body;
-
-      }
-    );
-
-
-  loadClasses();
-
-
-  setInterval(
-    loadClasses,
-    60000
-  );
+  }
 
 
   supabaseClient
     .auth
     .onAuthStateChange(
-      function() {
+      async function(
+        event,
+        session
+      ) {
 
-        loadClasses();
+        if (
+          session &&
+          session.user
+        ) {
 
-      }
-    );
-
-
-  if (
-    "serviceWorker" in navigator
-  ) {
-
-    window.addEventListener(
-      "load",
-      async function() {
-
-        try {
-
-          const registration =
-            await navigator
-              .serviceWorker
-              .register("./sw.js");
-
-
-          registration.update();
-
-        }
-
-        catch (error) {
-
-          console.log(error);
+          await showAccount(
+            session.user
+          );
 
         }
 
       }
     );
 
-  }
+
+  checkSession();
 
 </script>
 
